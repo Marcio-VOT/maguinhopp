@@ -8,7 +8,7 @@ int main()
     RenderWindow window(VideoMode(500, 500), "Jogo");
 
     // figura
-    RectangleShape shape(Vector2f(100.f, 100.f));
+    RectangleShape shape(Vector2f(50.f, 50.f));
 
     Texture texture;
     if (!texture.loadFromFile("Inimigos/slime-blue.png"))
