@@ -4,23 +4,24 @@
 using namespace sf;
 int main()
 {
-    //Janela do Jogo
+    // Janela do Jogo
     RenderWindow window(VideoMode(500, 500), "Jogo");
 
-    //figura
+    // figura
     RectangleShape shape(Vector2f(100.f, 100.f));
 
     Texture texture;
-    if(!texture.loadFromFile("Inimigos/slime-blue.png"))
+    if (!texture.loadFromFile("Inimigos/slime-blue.png"))
     {
         std::cout << "Error" << std::endl;
     }
 
-    Sprite sprite;
-    sprite.setTexture(texture);
+    // Sprite sprite;
+    // sprite.setTexture(texture);
+    shape.setTexture(&texture);
     texture.setSmooth(true);
-    
-    //shape.setFillColor(Color::Green);
+
+    // shape.setFillColor(Color::Green);
 
     while (window.isOpen())
     {
@@ -31,11 +32,11 @@ int main()
                 window.close();
         }
 
-        sprite.setPosition(sf::Vector2f(10.f, 50.f)); // absolute position
-        sprite.move(sf::Vector2f(5.f, 10.f)); // offset relative to the current position
-        
+        // sprite.setPosition(sf::Vector2f(10.f, 50.f)); // absolute position
+        // sprite.move(sf::Vector2f(5.f, 10.f));         // offset relative to the current position
+
         // Get the position of the shape
-        Vector2f position = sprite.getPosition();
+        Vector2f position = shape.getPosition();
 
         // Get the size of the window
         Vector2u windowSize = window.getSize();
@@ -118,8 +119,8 @@ int main()
             }
         }
 
-        window.clear();
-        window.draw(sprite);
+        window.clear(Color(173, 216, 230));
+        window.draw(shape);
         window.display();
     }
 
