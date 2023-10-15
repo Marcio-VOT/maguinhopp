@@ -8,10 +8,10 @@ int main()
     RenderWindow window(VideoMode(1800, 920), "Jogo");
 
     // figura
-    RectangleShape shape(Vector2f(50.f, 50.f));
+    RectangleShape shape(Vector2f(60.f, 85.f));
 
     Texture texture;
-    if (!texture.loadFromFile("Inimigos/slime-blue.png"))
+    if (!texture.loadFromFile("Jogadores/Jogador1.png"))
     {
         std::cout << "Error" << std::endl;
     }
@@ -94,28 +94,28 @@ int main()
         {
             if (!isTouchingLeft)
             {
-                shape.move(-0.1, 0);
+                shape.move(-1, 0);
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Right))
         {
             if (!isTouchingRight)
             {
-                shape.move(0.1, 0);
+                shape.move(1, 0);
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Up))
         {
             if (!isTouchingTop)
             {
-                shape.move(0, -0.1);
+                shape.move(0, -1);
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Down))
         {
             if (!isTouchingBottom)
             {
-                shape.move(0, 0.1);
+                shape.move(0, 1);
             }
         }
 
