@@ -5,7 +5,7 @@ using namespace sf;
 int main()
 {
     // Janela do Jogo
-    RenderWindow window(VideoMode(500, 500), "Jogo");
+    RenderWindow window(VideoMode(1800, 920), "Jogo");
 
     // figura
     RectangleShape shape(Vector2f(50.f, 50.f));
