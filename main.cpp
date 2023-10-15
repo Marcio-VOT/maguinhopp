@@ -1,11 +1,26 @@
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
 int main()
 {
-    RenderWindow window(VideoMode(500, 500), "SFML works!");
+    //Janela do Jogo
+    RenderWindow window(VideoMode(500, 500), "Jogo");
+
+    //figura
     RectangleShape shape(Vector2f(100.f, 100.f));
-    shape.setFillColor(Color::Green);
+
+    Texture texture;
+    if(!texture.loadFromFile("Inimigos/slime-blue.png"))
+    {
+        std::cout << "Error" << std::endl;
+    }
+
+    Sprite sprite;
+    sprite.setTexture(texture);
+    texture.setSmooth(true);
+    
+    //shape.setFillColor(Color::Green);
 
     while (window.isOpen())
     {
@@ -16,8 +31,11 @@ int main()
                 window.close();
         }
 
+        sprite.setPosition(sf::Vector2f(10.f, 50.f)); // absolute position
+        sprite.move(sf::Vector2f(5.f, 10.f)); // offset relative to the current position
+        
         // Get the position of the shape
-        Vector2f position = shape.getPosition();
+        Vector2f position = sprite.getPosition();
 
         // Get the size of the window
         Vector2u windowSize = window.getSize();
@@ -101,7 +119,7 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+        window.draw(sprite);
         window.display();
     }
 
