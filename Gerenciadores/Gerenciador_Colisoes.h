@@ -4,7 +4,7 @@
 #include "../Listas/Lista.h"
 #include "../Entidades/Entidade.h"
 
-namespace Gerenciadores
+/*namespace Gerenciadores
 {
     class Gerenciador_Colisoes
     {
@@ -25,4 +25,4 @@ namespace Gerenciadores
         int colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2);
 
     };
-}
+}*/
