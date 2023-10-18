@@ -1,9 +1,7 @@
-#include "Jogo.h"
+#include "../Jogo.h"
 
-
-Jogo::Jogo():
-    window(VideoMode(1800, 920), "Jogo"),
-    shape(Vector2f(60.f, 85.f))
+Jogo::Jogo() : window(VideoMode(1800, 920), "Jogo"),
+               shape(Vector2f(60.f, 85.f))
 {
     if (!texture.loadFromFile("Jogadores/Jogador1.png"))
     {
@@ -16,7 +14,6 @@ Jogo::Jogo():
 
 Jogo::~Jogo()
 {
-
 }
 
 void Jogo::Executar()
@@ -121,5 +118,4 @@ void Jogo::Executar()
         window.draw(shape);
         window.display();
     }
-
 }
