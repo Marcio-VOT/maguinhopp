@@ -1,15 +1,14 @@
 #include "../Gerenciadores/Gerenciador_Grafico.h"
-#include "../Ente.h"
+#include "../ClassBase/Ente.h"
 
 #include <iostream>
 
 namespace Gerenciadores
 {
-    Gerenciador_Grafico* Gerenciador_Grafico::instancia(nullptr);
+    Gerenciador_Grafico *Gerenciador_Grafico::instancia(nullptr);
 
-    Gerenciador_Grafico::Gerenciador_Grafico():
-    janela(new sf::RenderWindow(sf::VideoMode(LARGURA_TELA, ALTURA_TELA), "PETECO-TEC_PROG")),
-    camera(sf::Vector2f(LARGURA_TELA / 2.f, ALTURA_TELA / 2.f), sf::Vector2f(LARGURA_TELA, ALTURA_TELA)) // posição e tamanho
+    Gerenciador_Grafico::Gerenciador_Grafico() : janela(new sf::RenderWindow(sf::VideoMode(LARGURA_TELA, ALTURA_TELA), "PETECO-TEC_PROG")),
+                                                 camera(sf::Vector2f(LARGURA_TELA / 2.f, ALTURA_TELA / 2.f), sf::Vector2f(LARGURA_TELA, ALTURA_TELA)) // posição e tamanho
     {
         janela->setFramerateLimit(60);
         janela->setView(camera);
@@ -24,7 +23,7 @@ namespace Gerenciadores
             janela->draw(*pE->get_corpo());
     }
     // Propaganda:
-    void Gerenciador_Grafico::desenharTextura(sf::Texture* pT)
+    void Gerenciador_Grafico::desenharTextura(sf::Texture *pT)
     {
         if (pT)
         {
@@ -56,7 +55,7 @@ namespace Gerenciadores
     void Gerenciador_Grafico::fecharJanela()
     {
         if (get_JanelaAberta())
-            janela->close();       
+            janela->close();
     }
     sf::RenderWindow *Gerenciador_Grafico::get_Janela() const
     {
@@ -70,6 +69,6 @@ namespace Gerenciadores
     void Gerenciador_Grafico::centralizarCamera(sf::Vector2f p)
     {
         camera.setCenter(p);
-        janela->setView(camera);        
+        janela->setView(camera);
     }
 }
