@@ -6,9 +6,10 @@ namespace IDs
   enum class IDs
   {
     vazio = 0,
-    jogador, // 1
-    mob1,    // 2
-    mob2,    // 3
-    boss,    // 4
+    jogador1, // 1
+    jogador2, // 2
+    mob1,     // 3
+    mob2,     // 4
+    boss,     // 5
   };
 }

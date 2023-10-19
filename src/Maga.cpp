@@ -1,7 +1,7 @@
 #include "Maga.h"
 
 Maga::Maga(RenderWindow *w)
-    : Ente(IDs::IDs::jogador),
+    : Ente(IDs::IDs::jogador1),
       size(50.f, 80.f),
       position(1.f, 10.f),
       velocity(1.000),
@@ -9,8 +9,6 @@ Maga::Maga(RenderWindow *w)
 {
   body.setSize(size);
   body.setPosition(position);
-  body.setFillColor(Color::Red);
-
   if (!texture.loadFromFile("Jogadores/Jogador1.png"))
   {
     std::cout << "Error" << std::endl;

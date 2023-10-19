@@ -1,4 +1,4 @@
-#pragma
+#pragma once
 #include "Ente.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -7,7 +7,7 @@ using namespace std;
 using namespace sf;
 class Maga : public Ente
 {
-private:
+protected:
   RectangleShape body;
   Vector2f size;
   Vector2f position;
@@ -19,6 +19,6 @@ public:
   Maga(RenderWindow *w);
   ~Maga();
   const string salvar();
-  void move();
+  virtual void move();
   void desenhar();
 };

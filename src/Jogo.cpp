@@ -1,7 +1,11 @@
 #include "Jogo.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 
 Jogo::Jogo() : window(VideoMode(1800, 920), "Jogo"),
-               maga(&window)
+               maga(&window), mago(&window)
+
 {
     Executar();
 }
@@ -19,17 +23,29 @@ void Jogo::Executar()
         {
             if (event.type == Event::Closed)
             {
-
-                cout << "Fechando"
-                     << "\n"
-                     << maga.salvar() << endl;
+                // save the maga.salvar inside a file
+                ofstream myfile;
+                myfile.open("save.txt");
+                if (myfile.is_open())
+                {
+                    cout << "File ofstream is open" << endl;
+                    myfile << maga.salvar() << endl;
+                    myfile << mago.salvar() << endl;
+                    myfile.close();
+                }
+                else
+                {
+                    cout << "Unable to open file";
+                }
 
                 window.close();
             }
         }
+        mago.move();
         maga.move();
         window.clear(Color(173, 216, 230));
         maga.desenhar();
+        mago.desenhar();
         window.display();
     }
 }

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Maga.h"
+#include "Mago.h"
 
 using namespace sf;
 class Jogo
@@ -11,6 +12,8 @@ private:
     RenderWindow window;
     // maga
     Maga maga;
+    // mago
+    Mago mago;
 
 public:
     Jogo();
