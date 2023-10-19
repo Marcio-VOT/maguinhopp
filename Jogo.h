@@ -1,5 +1,5 @@
-#include <iostream>
-#include <SFML/Graphics.hpp>
+#pragma once
+#include "Jogador.h"
 
 using namespace sf;
 class Jogo
@@ -8,8 +8,8 @@ private:
     // Janela do Jogo
     RenderWindow window;
     // figura
-    RectangleShape shape;
-    Texture texture;
+    RectangleShape jogador;
+    
 public:
     Jogo();
     ~Jogo();
