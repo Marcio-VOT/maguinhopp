@@ -34,3 +34,5 @@ c_cpp_properties.json
 
 #make
 Makefile
+include
+lib
