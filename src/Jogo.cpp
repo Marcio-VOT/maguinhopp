@@ -1,9 +1,8 @@
 #include "../Jogo.h"
 
 Jogo::Jogo() : window(VideoMode(1800, 920), "Jogo"),
-               shape(Vector2f(60.f, 85.f))
+               jogador()
 {
-    shape.setFillColor(Color::Green);
     Executar();
 }
 
@@ -25,7 +24,8 @@ void Jogo::Executar()
         
 
         window.clear();
-        window.draw(shape);
+        jogador.move();
+        window.draw(jogador.getBody());
         window.display();
     }
 }

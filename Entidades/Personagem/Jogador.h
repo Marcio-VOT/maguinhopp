@@ -2,6 +2,7 @@
 #include <iostream>
 
 using namespace sf;
+
 class Jogador
 {
 private:
@@ -11,6 +12,7 @@ private:
 public:
     Jogador(const Vector2f pos, const Vector2f tam);
     Jogador(const RectangleShape body);
+    Jogador();
     ~Jogador();
 
     const RectangleShape getBody();

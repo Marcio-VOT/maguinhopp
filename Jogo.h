@@ -1,5 +1,5 @@
 #pragma once
-#include "Jogador.h"
+#include "../Entidades/Personagem/Jogador.h"
 
 using namespace sf;
 class Jogo
@@ -8,7 +8,7 @@ private:
     // Janela do Jogo
     RenderWindow window;
     // figura
-    RectangleShape jogador;
+    Jogador jogador;
     
 public:
     Jogo();

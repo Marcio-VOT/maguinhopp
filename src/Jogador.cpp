@@ -1,4 +1,4 @@
-#include   "Jogador.h"
+#include "../../Jogador.h"
 
 Jogador::Jogador(const Vector2f pos, const Vector2f tam)
 {
@@ -11,7 +11,12 @@ Jogador::Jogador(const RectangleShape body):
     body(body)
 {
     inicializa();
-}  
+}
+Jogador::Jogador():
+    body()
+{
+    inicializa();
+}
 
 void Jogador::inicializa()
 {
