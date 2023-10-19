@@ -1,4 +1,4 @@
-#include "../../Jogador.h"
+#include "../Entidades/Personagem/Jogador.h"
 
 Jogador::Jogador(const Vector2f pos, const Vector2f tam)
 {
