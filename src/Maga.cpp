@@ -1,7 +1,7 @@
 #include "Maga.h"
 
-Maga::Maga(RenderWindow *w)
-    : Ente(IDs::IDs::jogador1),
+Maga::Maga(RenderWindow *w, IDs::IDs ids)
+    : Ente(ids),
       size(50.f, 80.f),
       position(1.f, 10.f),
       velocity(1.000),

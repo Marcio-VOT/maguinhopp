@@ -16,7 +16,7 @@ protected:
   RenderWindow *window;
 
 public:
-  Maga(RenderWindow *w);
+  Maga(RenderWindow *w, IDs::IDs ids);
   ~Maga();
   const string salvar();
   virtual void move();

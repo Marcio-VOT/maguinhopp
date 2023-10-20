@@ -1,7 +1,7 @@
 #include "Mago.h"
 
-Mago::Mago(RenderWindow *w)
-    : Maga(w)
+Mago::Mago(RenderWindow *w, IDs::IDs ids)
+    : Maga(w, ids)
 {
   if (!texture.loadFromFile("Jogadores/mago.png"))
   {

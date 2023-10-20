@@ -7,7 +7,7 @@ class Mago : public Maga
 private:
   /* data */
 public:
-  Mago(RenderWindow *w);
+  Mago(RenderWindow *w, IDs::IDs ids);
   ~Mago();
   void move();
 };

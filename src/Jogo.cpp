@@ -4,7 +4,7 @@
 #include <string>
 
 Jogo::Jogo() : window(VideoMode(1800, 920), "Jogo"),
-               maga(&window), mago(&window)
+               maga(&window, IDs::IDs::jogador1), mago(&window, IDs::IDs::jogador2)
 
 {
     Executar();
