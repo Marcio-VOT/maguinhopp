@@ -1,7 +1,7 @@
 #include "../Jogo.h"
 
 Jogo::Jogo() : window(VideoMode(1800, 920), "Jogo"),
-               jogador(RectangleShape(Vector2f(50.f, 50.f)))
+               jogador()
 {
     Executar();
 }

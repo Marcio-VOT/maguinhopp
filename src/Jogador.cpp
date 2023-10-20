@@ -1,6 +1,7 @@
 #include "../Entidades/Personagem/Jogador.h"
 
-Jogador::Jogador(const Vector2f pos, const Vector2f tam)
+Jogador::Jogador(const Vector2f pos, const Vector2f tam):
+    body(RectangleShape(tam))
 {
     body.setPosition(pos);
     body.setFillColor(Color::Green);
