@@ -18,6 +18,6 @@ class Personagem
         ~Personagem();
 
         const RectangleShape getBody();
-        virtual void move();
+        virtual void move() = 0;
 
 };
