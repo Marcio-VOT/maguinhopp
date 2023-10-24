@@ -13,8 +13,6 @@ class Personagem
         
     public:
         Personagem(const Vector2f pos, const Vector2f tam);
-        Personagem(const RectangleShape body);
-        Personagem();
         ~Personagem();
 
         const RectangleShape getBody();

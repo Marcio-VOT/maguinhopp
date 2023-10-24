@@ -1,0 +1,2 @@
+#include "../GerenciadorGrafico/GerenciadorGrafico.h"
+
