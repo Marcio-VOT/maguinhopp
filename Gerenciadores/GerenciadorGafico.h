@@ -8,7 +8,7 @@ using namespace sf;
 class GerenciadorGrafico
 {
 private:
-    RenderWindow window;
+    RenderWindow* window;
     //Padrao Singleton
     static GerenciadorGrafico* pGrafico;
     GerenciadorGrafico();
@@ -17,10 +17,9 @@ public:
 
     static GerenciadorGrafico* getGerenciadorGrafico();
 
-    static GerenciadorGrafico* getGerenciadorGrafico();
     RenderWindow* getWindow();
     void limpaJanela();
-    void desenhaElemento(const RectangleShape body);  
+    void desenhaElemento(RectangleShape body);  
     void mostraElemento();
     void fechaJanela();
     const bool verificaJanelaAberta();

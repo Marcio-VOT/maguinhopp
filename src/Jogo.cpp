@@ -1,6 +1,6 @@
-#include "../Jogo.h"
+#include "Jogo.h"
 
-Jogo::Jogo() : window(VideoMode(1800, 920), "Maguinho++"),
+Jogo::Jogo() : pGrafico(pGrafico->getGerenciadorGrafico()),
                personagens()
 {
     Jogador* jogador = new Jogador(Vector2f(100.0f, 200.0f), Vector2f(50.0f, 50.0f));
