@@ -14,7 +14,7 @@ namespace Entidades
         bool nochao;
         sf::Vector2f velocidade;
     public:
-        Entidade(sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
+        Entidade(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), IDs::IDs id  = IDs::IDs::vazio);
         ~Entidade();
         // Se for virtual puro n dá para fazer o cast (n sei o pq);
         virtual void executar()=0;
@@ -26,5 +26,10 @@ namespace Entidades
         void setNochao(bool n) { nochao = n; }
         const sf::Vector2f getVelocidade () const { return velocidade; }
         void setVelocidade(sf::Vector2f v);
+        virtual void salvar(std::ostringstream* entrada)
+        {
+            Ente::salvar(entrada);
+            (*entrada) << ", \"posicao\": [" << corpo.getPosition().x<<","<<corpo.getPosition().y<<"], \"velocidade\": ["<<velocidade.x<<","<<velocidade.y<<"]";
+        }
     };
 }

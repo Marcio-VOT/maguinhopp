@@ -2,6 +2,7 @@
 
 #include "Personagem.h"
 
+
 namespace Entidades
 {
     namespace Personagens
@@ -11,10 +12,11 @@ namespace Entidades
         private:
             int pontos;
         public:
-            Jogador();
+            Jogador(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f vel = sf::Vector2f(0, 0));
             ~Jogador();
             void executar();
             void mover();
+            void salvar(std::ostringstream* entrada);
         };
     }
 }

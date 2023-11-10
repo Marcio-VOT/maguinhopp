@@ -77,6 +77,15 @@
     "string_view": "cpp",
     "fstream": "cpp",
     "numbers": "cpp",
-    "cinttypes": "cpp"
+    "cinttypes": "cpp",
+    "any": "cpp",
+    "chrono": "cpp",
+    "codecvt": "cpp",
+    "forward_list": "cpp",
+    "iomanip": "cpp",
+    "ranges": "cpp",
+    "span": "cpp",
+    "sstream": "cpp",
+    "valarray": "cpp"
   }
 }

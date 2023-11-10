@@ -11,11 +11,10 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Jogador::Jogador():
-        Personagem(),
+        Jogador::Jogador(sf::Vector2f pos, sf::Vector2f vel):
+        Personagem(pos, vel, IDs::IDs::jgd1),
         pontos(0)
         {
-          // corpo.setTextureRect(sf::IntRect(0, 0, 50, 50));
           corpo.setSize(sf::Vector2f(LARGURA_JOGADOR, ALTURA_JOGADOR));
           corpo.setOrigin(sf::Vector2f((LARGURA_JOGADOR-TAM)/2, (ALTURA_JOGADOR-TAM)/2));
           set_and_load_textura(SKIN_JOGADOR);
@@ -50,9 +49,20 @@ namespace Entidades
                 
             if(velocidade.x == velocidade_inicial.x)
                 velocidade.x *= 0.9f;
+
+            if(velocidade.x > max_vel)
+                velocidade.x = max_vel;
+            else if(velocidade.x < -max_vel)
+                velocidade.x = -max_vel;
             
             corpo.setPosition(corpo.getPosition() + velocidade);
             nochao = false;
+        }
+
+        void Jogador::salvar(std::ostringstream* entrada)
+        {
+            Personagem::salvar(entrada);
+            (*entrada) << ", \"pontos\": " << pontos << " }" << std::endl;
         }
     }
 }

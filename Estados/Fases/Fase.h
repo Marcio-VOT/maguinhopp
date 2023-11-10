@@ -8,6 +8,11 @@
 #include "../../Gerenciadores/Gerenciador_Colisoes.h"
 #include "../Estado.h"
 
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include "json.hpp"
+
 namespace Estados
 {
     namespace Fases
@@ -20,6 +25,8 @@ namespace Estados
             Listas::ListaEntidades obstaculos;
             Listas::ListaEntidades inimigos;
             Gerenciadores::Gerenciador_Colisoes gC;
+            std::ostringstream buffer;
+
         public:
             Fase(int i = - 1);
             ~Fase();
@@ -31,6 +38,7 @@ namespace Estados
             // Substituído
             // void criarObstMedios();
             void criarCenario(std::string caminho);
+            void salvar();
         };
     }    
 }

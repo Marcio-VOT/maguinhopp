@@ -4,8 +4,8 @@
 Gerenciadores::Gerenciador_Grafico* Ente::pGG(Gerenciadores::Gerenciador_Grafico::get_instancia());
 
 
-Ente::Ente(sf::Vector2f tam):
-id(0),
+Ente::Ente(sf::Vector2f tam, IDs::IDs id):
+id(id),
 corpo(tam)
 {
 }

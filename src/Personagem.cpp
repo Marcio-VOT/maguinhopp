@@ -4,9 +4,11 @@ namespace Entidades
 {
     namespace Personagens
     {
-        Personagem::Personagem():
-        Entidade(),
-        num_vidas(1)
+        int Personagem::max_vel = 5;
+        Personagem::Personagem(sf::Vector2f pos, sf::Vector2f vel, IDs::IDs id):
+        Entidade(pos, id),
+        num_vidas(1),
+        pontos_de_vida(50)
         {
 
         }

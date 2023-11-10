@@ -4,8 +4,8 @@
 
 namespace Entidades
 {
-    Entidade::Entidade(sf::Vector2f pos):
-    Ente(sf::Vector2f(TAM, TAM)),
+    Entidade::Entidade(sf::Vector2f pos, IDs::IDs id):
+    Ente(sf::Vector2f(TAM, TAM), id),
     posicao(pos),
     nochao(false),
     velocidade(sf::Vector2f(0.f, 0.f))
