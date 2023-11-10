@@ -2,6 +2,13 @@
 
 #include "Personagem.h"
 
+#include <time.h>
+
+#include <cmath>
+
+#define VELOCIDADE_JOGADOR_X 0.025f
+#define VELOCIDADE_JOGADOR_Y 0.025f
+
 using namespace sf;
 
 class Jogador : public Personagem
@@ -12,11 +19,8 @@ private:
     void inicializa();
 public:
     Jogador(const Vector2f pos, const Vector2f tam);
-    Jogador(const RectangleShape body);
-    Jogador();
     ~Jogador();
-
-    const RectangleShape getBody();
-    void move();
+    
+    void atualiza();
 };
 

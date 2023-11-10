@@ -31,27 +31,14 @@ Jogo::~Jogo()
 
 void Jogo::Executar()
 {
+    pEvento->executar();
     while (pGrafico->verificaJanelaAberta())
     {
-        Event event;
-        while (pGrafico->getWindow()->pollEvent(event))
-        {
-            if (event.type == Event::Closed)
-            {
-                pGrafico->fechaJanela();
-            }else if(event.type == Event::KeyPressed)
-            {
-                if(event.key.code == Keyboard::Escape)
-                {
-                    pGrafico->fechaJanela();
-                }
-            }
-                
-        }
+        
         pGrafico->limpaJanela();
         for(int i = 0; i < personagens.size(); i++)
         {
-            personagens.at(i)->move();
+            personagens.at(i)->atualiza();
             pGrafico->desenhaElemento(personagens.at(i)->getBody());
         }
         pGrafico->mostraElemento();

@@ -1,58 +1,27 @@
 #include "Entidades/Personagem/Jogador.h"
 
 Jogador::Jogador(const Vector2f pos, const Vector2f tam):
-    body(RectangleShape(tam))
+    Personagem(pos, tam),body(tam), vel(), podeAndar(true)
 {
     body.setPosition(pos);
-    body.setFillColor(Color::Green);
+    body.setFillColor(Color::Blue);
     inicializa();
-}
-
-Jogador::Jogador(const RectangleShape body): 
-    body(body)
-{
-    inicializa();
-}
-Jogador::Jogador():
-    body()
-{
-    inicializa();
-}
-
-void Jogador::inicializa()
-{
-    vel = Vector2f(0.1f, 0.1f);
 }
 
 Jogador::~Jogador()
 {
-}   
-
-const RectangleShape Jogador::getBody()
-{
-    return body;
 }
 
-void Jogador::move()
+void Jogador::inicializa()
 {
-    if(Keyboard::isKeyPressed(Keyboard::Key::A))
-    {
-        body.move(-vel.x, 0.f);
-    }
+    vel = Vector2f(VELOCIDADE_JOGADOR_X, VELOCIDADE_JOGADOR_Y);
+}
 
-    if (Keyboard::isKeyPressed(Keyboard::Key::D))
+void Jogador::atualiza()
+{
+    if(podeAndar)
     {
-        body.move(vel.x, 0.f);
+        atualizarPosicao();
     }
-
-    if (Keyboard::isKeyPressed(Keyboard::Key::W))
-    {
-        body.move(0.f, -vel.y);
-    }
-
-    if (Keyboard::isKeyPressed(Keyboard::Key::S))
-    {
-        body.move(0.f, vel.y);
-    }
-     
+    relogio.restart();
 }

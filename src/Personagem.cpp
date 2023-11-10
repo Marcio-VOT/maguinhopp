@@ -1,7 +1,7 @@
 #include "Entidades/Personagem/Personagem.h"
 
-Personagem::Personagem(const Vector2f pos, const Vector2f tam):
-    body(RectangleShape(tam))
+Personagem::Personagem(const Vector2f pos, const Vector2f tam, const float vel):
+    body(RectangleShape(tam)), velFinal(vel, GRAVIDADE), podeAndar(false), paraEsquerda(false), relogio(), dt(0.0f)
 {
     body.setPosition(pos);
     body.setFillColor(Color::Green);
@@ -16,27 +16,32 @@ const RectangleShape Personagem::getBody()
     return body;
 }
 
-void Personagem::move()
+void Personagem::andar(const bool paraEsquerda)
 {
-    if(Keyboard::isKeyPressed(Keyboard::Key::A))
-    {
-        body.move(-vel.x, 0.f);
-    }
-
-    if (Keyboard::isKeyPressed(Keyboard::Key::D))
-    {
-        body.move(vel.x, 0.f);
-    }
-
-    if (Keyboard::isKeyPressed(Keyboard::Key::W))
-    {
-        body.move(0.f, -vel.y);
-    }
-
-    if (Keyboard::isKeyPressed(Keyboard::Key::S))
-    {
-        body.move(0.f, vel.y);
-    }
-     
+    podeAndar = true;
+    this->paraEsquerda = paraEsquerda;
 }
 
+void Personagem::parar()
+{
+    podeAndar = false;
+}
+
+void Personagem::atualiza()
+{
+    atualizarPosicao();
+}
+
+void Personagem::atualizarPosicao()
+{
+    dt = relogio.getElapsedTime().asSeconds();
+    float ds = velFinal.x * dt;
+
+    if(paraEsquerda)
+    {
+        ds *= -1;
+    }
+
+    body.move(ds, 0.0f);
+    
+}

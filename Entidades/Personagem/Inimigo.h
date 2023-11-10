@@ -18,6 +18,7 @@ class Inimigo : public Personagem
     private:
         Jogador* jogador;
         Clock relogio;
+        Vector2f vel;
         short moveAleatorio;
         void inicializa();
     public:
