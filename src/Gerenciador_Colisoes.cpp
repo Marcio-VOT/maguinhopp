@@ -76,32 +76,47 @@ namespace Gerenciadores
         Entidades::Entidade* jgd2 = (*jgd);
         float difx = jgd1->getPosicao().x - jgd2->getPosicao().x;
         float dify = jgd1->getPosicao().y - jgd2->getPosicao().y;
+        //joagdor 2 totalmente a esquerda da tela
         if(difx >= LARGURA_TELA/2){
-            jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
-            jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
-            if(jgd2->getPosicao().x < jgd1->getPosicao().x - LARGURA_TELA/2){
-                jgd2->setPosicao(sf::Vector2f(jgd1->getPosicao().x - LARGURA_TELA/2, jgd2->getPosicao().y));
-                }
-        }else if(difx <= -LARGURA_TELA/2){
-            jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
-            jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
-            if(jgd2->getPosicao().x > jgd1->getPosicao().x + LARGURA_TELA/2){
-                jgd2->setPosicao(sf::Vector2f(jgd1->getPosicao().x + LARGURA_TELA/2, jgd2->getPosicao().y));
+            if(jgd1->getVelocidade().x > 0){
+                jgd1->setPosicao(sf::Vector2f(jgd1->getPosicao().x - jgd1->getVelocidade().x, jgd1->getPosicao().y));
+                jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
             }
+            if(jgd2->getVelocidade().x < 0){
+                jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x - jgd2->getVelocidade().x, jgd2->getPosicao().y));
+                jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
+            }
+
+            // jgd1->setPosicao(sf::Vector2f(jgd1->getPosicao().x -1 , jgd1->getPosicao().y));
+            // jgd2->setPosicao(sf::Vector2f(jgd1->getPosicao().x - LARGURA_TELA/2, jgd2->getPosicao().y));
+        
+        //joagdor 2 totalmente a direita da tela
+        }else if((difx - 50) <= -LARGURA_TELA/2){
+            if(jgd1->getVelocidade().x < 0){
+                jgd1->setPosicao(sf::Vector2f(jgd1->getPosicao().x - jgd1->getVelocidade().x, jgd1->getPosicao().y));
+                jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
+            }
+            if(jgd2->getVelocidade().x > 0){
+                jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x - jgd2->getVelocidade().x, jgd2->getPosicao().y));
+                jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
+            }
+
+            // jgd1->setPosicao(sf::Vector2f(jgd1->getPosicao().x +1 , jgd1->getPosicao().y));
+            // jgd2->setPosicao(sf::Vector2f(jgd1->getPosicao().x + LARGURA_TELA/2 - 50, jgd2->getPosicao().y));
         }
-        if(dify >= ALTURA_TELA/2){
-            jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
-            jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
-            if(jgd2->getPosicao().y < jgd1->getPosicao().y - ALTURA_TELA/2){
-                jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x, jgd1->getPosicao().y - ALTURA_TELA/2));
-            }
-        }else if(dify >= -ALTURA_TELA/2){
-            jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
-            jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
-            if(jgd2->getPosicao().y > jgd1->getPosicao().y + ALTURA_TELA/2){
-                jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x, jgd1->getPosicao().y + ALTURA_TELA/2));
-            }
-        }
+        // if(dify >= ALTURA_TELA/2){
+        //     jgd1->setVelocidade(sf::Vector2f(jgd1->getVelocidade().x, 0));
+        //     jgd2->setVelocidade(sf::Vector2f(jgd2->getVelocidade().x, 0));
+        //     if(jgd2->getPosicao().y < jgd1->getPosicao().y - ALTURA_TELA/2){
+        //         jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x, jgd1->getPosicao().y - ALTURA_TELA/2));
+        //     }
+        // }else if(dify <= -ALTURA_TELA/2){
+        //     jgd1->setVelocidade(sf::Vector2f(jgd1->getVelocidade().x, 0));
+        //     jgd2->setVelocidade(sf::Vector2f(jgd2->getVelocidade().x, 0));
+        //     if(jgd2->getPosicao().y > jgd1->getPosicao().y + ALTURA_TELA/2){
+        //         jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x, jgd1->getPosicao().y + ALTURA_TELA/2));
+        //     }
+        // }
         // LARGURA_TELA
         // ALTURA_TELA
     }
