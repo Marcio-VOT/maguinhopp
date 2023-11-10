@@ -31,6 +31,7 @@ namespace Estados
         void Fase::criarJogadores()
         {
             jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador()));
+            jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2()));
         }
         void Fase::criarInimMedios()
         {
