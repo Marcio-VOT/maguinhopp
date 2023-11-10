@@ -27,11 +27,12 @@ namespace Estados
         void Fase::gerenciar_colisoes()
         {
             gC.colisao_simples();
+            gC.colidiu_janela();
         }
         void Fase::criarJogadores()
         {
-            jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador()));
             jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2()));
+            jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador()));
         }
         void Fase::criarInimMedios()
         {

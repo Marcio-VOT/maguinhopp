@@ -36,6 +36,75 @@ namespace Gerenciadores
             jgd++;
         }
     }
+    void Gerenciador_Colisoes::colidiu_janela(){
+        Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
+        Entidades::Entidade* jgd1 = (*jgd);
+        // sf::Vector2f pos1 = jgd1->getPosicao();
+        // while (jgd != nullptr)
+        // {
+        //     if(difx >= LARGURA_TELA/2){
+        //     jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
+        //     jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
+        //     if(jgd2->getPosicao().x < jgd1->getPosicao().x - LARGURA_TELA/2){
+        //         jgd2->setPosicao(sf::Vector2f(jgd1->getPosicao().x - LARGURA_TELA/2, jgd2->getPosicao().y));
+        //         }
+        // }else if(difx <= -LARGURA_TELA/2){
+        //     jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
+        //     jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
+        //     if(jgd2->getPosicao().x > jgd1->getPosicao().x + LARGURA_TELA/2){
+        //         jgd2->setPosicao(sf::Vector2f(jgd1->getPosicao().x + LARGURA_TELA/2, jgd2->getPosicao().y));
+        //     }
+        // }
+        // if(dify >= ALTURA_TELA/2){
+        //     jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
+        //     jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
+        //     if(jgd2->getPosicao().y < jgd1->getPosicao().y - ALTURA_TELA/2){
+        //         jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x, jgd1->getPosicao().y - ALTURA_TELA/2));
+        //     }
+        // }else if(dify >= -ALTURA_TELA/2){
+        //     jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
+        //     jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
+        //     if(jgd2->getPosicao().y > jgd1->getPosicao().y + ALTURA_TELA/2){
+        //         jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x, jgd1->getPosicao().y + ALTURA_TELA/2));
+        //     }
+        // }
+            
+        //    jgd++;
+        // }
+        
+        jgd++;
+        Entidades::Entidade* jgd2 = (*jgd);
+        float difx = jgd1->getPosicao().x - jgd2->getPosicao().x;
+        float dify = jgd1->getPosicao().y - jgd2->getPosicao().y;
+        if(difx >= LARGURA_TELA/2){
+            jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
+            jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
+            if(jgd2->getPosicao().x < jgd1->getPosicao().x - LARGURA_TELA/2){
+                jgd2->setPosicao(sf::Vector2f(jgd1->getPosicao().x - LARGURA_TELA/2, jgd2->getPosicao().y));
+                }
+        }else if(difx <= -LARGURA_TELA/2){
+            jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
+            jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
+            if(jgd2->getPosicao().x > jgd1->getPosicao().x + LARGURA_TELA/2){
+                jgd2->setPosicao(sf::Vector2f(jgd1->getPosicao().x + LARGURA_TELA/2, jgd2->getPosicao().y));
+            }
+        }
+        if(dify >= ALTURA_TELA/2){
+            jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
+            jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
+            if(jgd2->getPosicao().y < jgd1->getPosicao().y - ALTURA_TELA/2){
+                jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x, jgd1->getPosicao().y - ALTURA_TELA/2));
+            }
+        }else if(dify >= -ALTURA_TELA/2){
+            jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
+            jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
+            if(jgd2->getPosicao().y > jgd1->getPosicao().y + ALTURA_TELA/2){
+                jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x, jgd1->getPosicao().y + ALTURA_TELA/2));
+            }
+        }
+        // LARGURA_TELA
+        // ALTURA_TELA
+    }
     int Gerenciador_Colisoes::colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2)
     {
         sf::Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(),

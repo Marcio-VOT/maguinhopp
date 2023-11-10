@@ -48,20 +48,8 @@ namespace Entidades
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 velocidade += sf::Vector2f(0, 0.1);
                 
-            
-            if (velocidade.x == velocidade_inicial.x && velocidade.x > 0){
-                if(velocidade.x < 0.08f)
-                    velocidade.x = 0;
-                if(velocidade.x > 0.08f)
-                    velocidade.x -= 0.08f;
-            }else if(velocidade.x == velocidade_inicial.x && velocidade.x < 0){
-                if(velocidade.x > -0.08f)
-                    velocidade.x = 0;
-                if(velocidade.x < -0.08f)
-                    velocidade.x += 0.08f;
-            }
-                
-
+            if(velocidade.x == velocidade_inicial.x)
+                velocidade.x *= 0.9f;
             
             corpo.setPosition(corpo.getPosition() + velocidade);
             nochao = false;

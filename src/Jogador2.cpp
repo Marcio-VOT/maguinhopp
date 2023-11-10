@@ -1,6 +1,6 @@
 #include "../Entidades/Personagens/Jogador2.h"
 
-#define SKIN_JOGADOR "./public/assets/Jogadores/Jogador1.png"
+#define SKIN_JOGADOR "./public/assets/Jogadores/mago.png"
 #define ALTURA_JOGADOR 85.0f
 #define LARGURA_JOGADOR 60.0f
 #include <iostream>
@@ -47,21 +47,9 @@ namespace Entidades
                 velocidade += sf::Vector2f(0, -5.f); 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
                 velocidade += sf::Vector2f(0, 0.1);
-                
-            
-            if (velocidade.x == velocidade_inicial.x && velocidade.x > 0){
-                if(velocidade.x < 0.08f)
-                    velocidade.x = 0;
-                if(velocidade.x > 0.08f)
-                    velocidade.x -= 0.08f;
-            }else if(velocidade.x == velocidade_inicial.x && velocidade.x < 0){
-                if(velocidade.x > -0.08f)
-                    velocidade.x = 0;
-                if(velocidade.x < -0.08f)
-                    velocidade.x += 0.08f;
-            }
-                
 
+            if(velocidade.x == velocidade_inicial.x)
+                velocidade.x *= 0.9f;
             
             corpo.setPosition(corpo.getPosition() + velocidade);
             nochao = false;
