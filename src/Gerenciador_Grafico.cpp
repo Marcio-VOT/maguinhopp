@@ -8,7 +8,7 @@ namespace Gerenciadores
     Gerenciador_Grafico* Gerenciador_Grafico::instancia(nullptr);
 
     Gerenciador_Grafico::Gerenciador_Grafico():
-    janela(new sf::RenderWindow(sf::VideoMode(LARGURA_TELA, ALTURA_TELA), "PETECO-TEC_PROG")),
+    janela(new sf::RenderWindow(sf::VideoMode(LARGURA_TELA, ALTURA_TELA), "MAGUINHO++")),
     camera(sf::Vector2f(LARGURA_TELA / 2.f, ALTURA_TELA / 2.f), sf::Vector2f(LARGURA_TELA, ALTURA_TELA)) // posição e tamanho
     {
         janela->setFramerateLimit(60);
