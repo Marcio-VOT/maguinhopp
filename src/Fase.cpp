@@ -138,17 +138,12 @@ namespace Estados
                 }
                 aux->salvar(&buffer);
             }
-            // while (j != nullptr)
-            // {
-            //     buffer << ",";
-            //     (*j)->salvar(&buffer);
-            //     j++;
-            // }
             buffer << "]";
 
             arquivo << buffer.str();
 
             arquivo.close();
+            
             // // Salvando inimigos: 
 
             // std::ofstream arquivo_inimigo(ARQUIVO_INIMIGO);  
