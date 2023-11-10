@@ -4,6 +4,7 @@
 #include "../../Entidades/Personagens/Jogador.h"
 #include "../../Entidades/Personagens/Jogador2.h"
 #include "../../Entidades/Obstaculos/Obst_Facil.h"
+#include "../../Entidades/Personagens/Inimigo_Facil.h"
 #include "../../Listas/ListaEntidades.h"
 #include "../../Gerenciadores/Gerenciador_Colisoes.h"
 #include "../Estado.h"
@@ -34,7 +35,7 @@ namespace Estados
             virtual void executar() = 0;
             void gerenciar_colisoes();
             void criarJogadores();
-            void criarInimMedios();
+            void criarInimigos();
             // Substituído
             // void criarObstMedios();
             void criarCenario(std::string caminho);

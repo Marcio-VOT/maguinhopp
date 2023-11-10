@@ -21,6 +21,7 @@ namespace Estados
             gC.set_jogadores(&jogadores);
             gC.set_obstaculos(&obstaculos);
             criarJogadores();
+            //criarInimigos();
         }
         Fase::~Fase()
         {
@@ -36,8 +37,7 @@ namespace Estados
             std::ifstream arquivo(ARQUIVO_JOGADOR);
             if (!arquivo)
             {
-                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2()));
-                jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador()));
+                std::cout << "Arquivo não existe - players" << std::endl;
                 return;
             }
 
@@ -77,12 +77,35 @@ namespace Estados
                 
             }
         }
-        void Fase::criarInimMedios()
+        void Fase::criarInimigos()
         {
+            std::ifstream arquivo(ARQUIVO_INIMIGO);
+            if (!arquivo)
+            {
+                std::cout << "Arquivo não existe - inimigos" << std::endl;   
+                return;
+            }
 
+            nlohmann::json json = nlohmann::json::parse(arquivo);
+
+            for (auto it = json.begin(); it != json.end(); ++it)
+            {
+                inimigos.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Inimigo_Facil(
+                    sf::Vector2f(
+                        (float) ((*it)["posicao"][0]), 
+                        (float) ((*it)["posicao"][1])
+                                ),
+                    sf::Vector2f(
+                        (float) ((*it)["velocidade"][0]),
+                        (float) ((*it)["velocidade"][1])
+                                )
+                    )));
+            }
+            arquivo.close();
         }
         void Fase::criarCenario(std::string caminho)
         {
+            std::cout << "Criando cenario" << std::endl;
             std::ifstream arquivo(caminho);
             if (!arquivo)
             {
@@ -90,8 +113,10 @@ namespace Estados
                 exit(1);
             }
             std::string linha;
-            
+
             Entidades::Entidade* aux = nullptr;
+
+            bool jogadores_iniciados = jogadores.get_tamanho() > 0;
 
             int j = 0;
             for (int i = 0; std::getline(arquivo, linha); i++)
@@ -99,15 +124,30 @@ namespace Estados
                 j = 0;
                 for (char tipo : linha)
                 {
+
                     switch (tipo)
                     {
                         // Plataforma:
-                    case '0':
+                    case '0':    
                         aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obst_Facil(sf::Vector2f(j * TAM, i * TAM)));
                         if (aux)
                             obstaculos.incluir(aux);
                     break;
-                    
+                        // Jogador1
+                    case '1':
+                        if(!jogadores_iniciados){
+                        aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
+                        if (aux)
+                            jogadores.incluir(aux);
+                        }
+                    break;
+                    case '2':
+                    if(!jogadores_iniciados){
+                        aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
+                        if (aux)
+                            jogadores.incluir(aux);
+                    }
+                    break;
                     default:
                         break;
                     }
@@ -143,7 +183,7 @@ namespace Estados
             arquivo << buffer.str();
 
             arquivo.close();
-            
+
             // // Salvando inimigos: 
 
             // std::ofstream arquivo_inimigo(ARQUIVO_INIMIGO);  

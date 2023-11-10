@@ -6,5 +6,6 @@
     jgd1, //1
     jgd2, //2
     plat_facil, //3
+    slime, //4
   };
 }
