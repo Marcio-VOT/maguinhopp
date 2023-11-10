@@ -27,7 +27,6 @@ namespace Estados
         void Fase::gerenciar_colisoes()
         {
             gC.colisao_simples();
-            gC.colidiu_janela();
         }
         void Fase::criarJogadores()
         {

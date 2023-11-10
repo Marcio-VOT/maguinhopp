@@ -21,6 +21,7 @@ namespace Gerenciadores
     {
         Listas::Lista<Entidades::Entidade>::Iterador obst;
         Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
+        Entidades::Entidade* jgd1 = (*jgd);
         while (jgd != nullptr)
         {
             obst = obstaculos->get_primeiro();
@@ -34,46 +35,13 @@ namespace Gerenciadores
                 obst++;
             }
             jgd++;
+            if(jgd != nullptr){
+                Entidades::Entidade* jgd2 = (*jgd);
+                colidiu_janela(jgd1, jgd2);
+            }
         }
     }
-    void Gerenciador_Colisoes::colidiu_janela(){
-        Listas::Lista<Entidades::Entidade>::Iterador jgd = jogadores->get_primeiro();
-        Entidades::Entidade* jgd1 = (*jgd);
-        // sf::Vector2f pos1 = jgd1->getPosicao();
-        // while (jgd != nullptr)
-        // {
-        //     if(difx >= LARGURA_TELA/2){
-        //     jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
-        //     jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
-        //     if(jgd2->getPosicao().x < jgd1->getPosicao().x - LARGURA_TELA/2){
-        //         jgd2->setPosicao(sf::Vector2f(jgd1->getPosicao().x - LARGURA_TELA/2, jgd2->getPosicao().y));
-        //         }
-        // }else if(difx <= -LARGURA_TELA/2){
-        //     jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
-        //     jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
-        //     if(jgd2->getPosicao().x > jgd1->getPosicao().x + LARGURA_TELA/2){
-        //         jgd2->setPosicao(sf::Vector2f(jgd1->getPosicao().x + LARGURA_TELA/2, jgd2->getPosicao().y));
-        //     }
-        // }
-        // if(dify >= ALTURA_TELA/2){
-        //     jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
-        //     jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
-        //     if(jgd2->getPosicao().y < jgd1->getPosicao().y - ALTURA_TELA/2){
-        //         jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x, jgd1->getPosicao().y - ALTURA_TELA/2));
-        //     }
-        // }else if(dify >= -ALTURA_TELA/2){
-        //     jgd1->setVelocidade(sf::Vector2f(0, jgd1->getVelocidade().y));
-        //     jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
-        //     if(jgd2->getPosicao().y > jgd1->getPosicao().y + ALTURA_TELA/2){
-        //         jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x, jgd1->getPosicao().y + ALTURA_TELA/2));
-        //     }
-        // }
-            
-        //    jgd++;
-        // }
-        
-        jgd++;
-        Entidades::Entidade* jgd2 = (*jgd);
+    void Gerenciador_Colisoes::colidiu_janela(Entidades::Entidade* jgd1, Entidades::Entidade* jgd2){
         float difx = jgd1->getPosicao().x - jgd2->getPosicao().x;
         float dify = jgd1->getPosicao().y - jgd2->getPosicao().y;
         //joagdor 2 totalmente a esquerda da tela
@@ -84,12 +52,8 @@ namespace Gerenciadores
             }
             if(jgd2->getVelocidade().x < 0){
                 jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x - jgd2->getVelocidade().x, jgd2->getPosicao().y));
-                jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
+                jgd2->setVelocidade(sf::Vector2f(-jgd2->getVelocidade().x * CR, jgd2->getVelocidade().y));
             }
-
-            // jgd1->setPosicao(sf::Vector2f(jgd1->getPosicao().x -1 , jgd1->getPosicao().y));
-            // jgd2->setPosicao(sf::Vector2f(jgd1->getPosicao().x - LARGURA_TELA/2, jgd2->getPosicao().y));
-        
         //joagdor 2 totalmente a direita da tela
         }else if((difx - 50) <= -LARGURA_TELA/2){
             if(jgd1->getVelocidade().x < 0){
@@ -98,27 +62,10 @@ namespace Gerenciadores
             }
             if(jgd2->getVelocidade().x > 0){
                 jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x - jgd2->getVelocidade().x, jgd2->getPosicao().y));
-                jgd2->setVelocidade(sf::Vector2f(0, jgd2->getVelocidade().y));
+                jgd2->setVelocidade(sf::Vector2f(-jgd2->getVelocidade().x * CR, jgd2->getVelocidade().y));
             }
-
-            // jgd1->setPosicao(sf::Vector2f(jgd1->getPosicao().x +1 , jgd1->getPosicao().y));
-            // jgd2->setPosicao(sf::Vector2f(jgd1->getPosicao().x + LARGURA_TELA/2 - 50, jgd2->getPosicao().y));
         }
-        // if(dify >= ALTURA_TELA/2){
-        //     jgd1->setVelocidade(sf::Vector2f(jgd1->getVelocidade().x, 0));
-        //     jgd2->setVelocidade(sf::Vector2f(jgd2->getVelocidade().x, 0));
-        //     if(jgd2->getPosicao().y < jgd1->getPosicao().y - ALTURA_TELA/2){
-        //         jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x, jgd1->getPosicao().y - ALTURA_TELA/2));
-        //     }
-        // }else if(dify <= -ALTURA_TELA/2){
-        //     jgd1->setVelocidade(sf::Vector2f(jgd1->getVelocidade().x, 0));
-        //     jgd2->setVelocidade(sf::Vector2f(jgd2->getVelocidade().x, 0));
-        //     if(jgd2->getPosicao().y > jgd1->getPosicao().y + ALTURA_TELA/2){
-        //         jgd2->setPosicao(sf::Vector2f(jgd2->getPosicao().x, jgd1->getPosicao().y + ALTURA_TELA/2));
-        //     }
-        // }
-        // LARGURA_TELA
-        // ALTURA_TELA
+       
     }
     int Gerenciador_Colisoes::colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2)
     {
