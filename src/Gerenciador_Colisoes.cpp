@@ -41,8 +41,8 @@ namespace Gerenciadores
         sf::Vector2f pos1 = e1->getPosicao(), pos2 = e2->getPosicao(),
         tam1 = e1->getTamanho(), tam2 = e2->getTamanho(),
         d(
-            fabs((pos1.x - pos2.x)) - ((tam1.x + tam2.x) / 2.f),
-            fabs((pos1.y - pos2.y)) - ((tam1.y + tam2.y) / 2.f)
+            fabs((pos1.x - pos2.x)) - ((tam1.x + tam2.x)/ 2.f),
+            fabs((pos1.y - pos2.y)) - ((tam1.y + tam2.y)/ 2.f)
         );
 
         if (d.x < 0 && d.y < 0)

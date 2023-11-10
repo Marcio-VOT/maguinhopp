@@ -33,6 +33,7 @@ namespace Gerenciadores
         void fecharJanela();
         void resetarCamera();
         void centralizarCamera(sf::Vector2f p);
+        void carregarTextura(sf::Texture* pT, std::string caminho);
         sf::RenderWindow* get_Janela() const;
     };
 }

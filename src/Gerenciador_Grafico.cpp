@@ -13,6 +13,7 @@ namespace Gerenciadores
     {
         janela->setFramerateLimit(60);
         janela->setView(camera);
+        
     }
     Gerenciador_Grafico::~Gerenciador_Grafico()
     {
@@ -33,6 +34,14 @@ namespace Gerenciadores
             janela->draw(sprite);
         }
     }
+    void Gerenciador_Grafico::carregarTextura(sf::Texture* pT, std::string caminho)
+    {
+        if (pT)
+        {
+            if (!pT->loadFromFile(caminho))
+                std::cout << "Erro ao carregar textura: " << caminho << std::endl;
+        }
+    }
     const bool Gerenciador_Grafico::get_JanelaAberta() const
     {
         return janela->isOpen();
@@ -51,7 +60,7 @@ namespace Gerenciadores
     void Gerenciador_Grafico::limpar()
     {
         if (get_JanelaAberta())
-            janela->clear();
+            janela->clear(sf::Color(137, 207, 240));
     }
     void Gerenciador_Grafico::fecharJanela()
     {
@@ -73,3 +82,4 @@ namespace Gerenciadores
         janela->setView(camera);        
     }
 }
+
