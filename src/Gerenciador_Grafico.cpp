@@ -13,7 +13,6 @@ namespace Gerenciadores
     {
         janela->setFramerateLimit(60);
         janela->setView(camera);
-        
     }
     Gerenciador_Grafico::~Gerenciador_Grafico()
     {
