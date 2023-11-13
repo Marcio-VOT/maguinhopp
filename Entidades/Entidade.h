@@ -17,7 +17,7 @@ namespace Entidades
         Entidade(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), IDs::IDs id  = IDs::IDs::vazio);
         ~Entidade();
         virtual void executar()=0;
-        virtual void colidir(Entidade* outro = nullptr);
+        virtual void colidir(Entidade* outro);
         const sf::Vector2f getPosicao() const { return corpo.getPosition(); }
         const sf::Vector2f getTamanho() const { return corpo.getSize(); }
         void setPosicao(sf::Vector2f p);
