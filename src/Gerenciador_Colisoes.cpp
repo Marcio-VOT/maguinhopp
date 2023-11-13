@@ -30,8 +30,8 @@ namespace Gerenciadores
                 int col = colidiu(*jgd, *obst);
                 if (col)
                 {
-                    (*jgd)->colidir();
-                    (*obst)->colidir();
+                    (*jgd)->colidir((*obst));
+                    (*obst)->colidir((*jgd));
                 }
                 obst++;
             }
@@ -51,8 +51,8 @@ namespace Gerenciadores
                 int col = colidiu(*inim, *obst);
                 if (col)
                 {
-                    (*inim)->colidir();
-                    (*obst)->colidir();
+                    (*inim)->colidir((*obst));
+                    (*obst)->colidir((*inim));
                 }
                 obst++;
             }
