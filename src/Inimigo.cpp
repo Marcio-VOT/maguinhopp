@@ -23,8 +23,11 @@ namespace Entidades
         }
 
         void Inimigo::colidir(Entidades::Entidade* outro){
-            if(outro->get_id() == IDs::IDs::jgd1){
-                Entidades::Personagens::Personagem* p = static_cast<Entidades::Personagens::Personagem*>(outro);
+            if(outro == nullptr)
+                return;
+            
+            if(outro->get_id() == IDs::IDs::jgd1 || outro->get_id() == IDs::IDs::jgd2){
+                Entidades::Personagens::Personagem* p = dynamic_cast<Entidades::Personagens::Personagem*>(outro);
                 if(ataque_tempo >= ataque_tempo_max){
                     p->set_vida(p->get_vida() - dano);
                     ataque_tempo = 0.f;
