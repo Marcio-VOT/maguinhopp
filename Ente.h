@@ -18,6 +18,7 @@ public:
   ~Ente();
   virtual void executar() = 0;
   void desenhar();
+  IDs::IDs get_id() const { return id; };
   const sf::RectangleShape* get_corpo() const;
   const sf::Texture* get_textura() const;
   const void set_textura();

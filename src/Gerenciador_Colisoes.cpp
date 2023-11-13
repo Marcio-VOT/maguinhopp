@@ -27,7 +27,8 @@ namespace Gerenciadores
             obst = obstaculos->get_primeiro();
             while (obst != nullptr)
             {
-                if (colidiu(*jgd, *obst))
+                int col = colidiu(*jgd, *obst);
+                if (col)
                 {
                     (*jgd)->colidir();
                     (*obst)->colidir();
@@ -40,6 +41,40 @@ namespace Gerenciadores
                 colidiu_janela(jgd1, jgd2);
             }
         }
+
+        Listas::Lista<Entidades::Entidade>::Iterador inim = inimigos->get_primeiro();
+        while (inim != nullptr)
+        {
+            obst = obstaculos->get_primeiro();
+            while (obst != nullptr)
+            {
+                int col = colidiu(*inim, *obst);
+                if (col)
+                {
+                    (*inim)->colidir();
+                    (*obst)->colidir();
+                }
+                obst++;
+            }
+            inim++;
+        }
+
+        inim = inimigos->get_primeiro();
+        jgd = jogadores->get_primeiro();
+        while (inim != nullptr)
+        {
+            while (jgd != nullptr)
+            {
+                if (colidiu(*inim, *jgd))
+                {
+                    (*inim)->colidir(*jgd);
+                    (*jgd)->colidir(*inim);
+                }
+                jgd++;
+            }
+            inim++;
+        }
+
     }
     void Gerenciador_Colisoes::colidiu_janela(Entidades::Entidade* jgd1, Entidades::Entidade* jgd2){
         float difx = jgd1->getPosicao().x - jgd2->getPosicao().x;

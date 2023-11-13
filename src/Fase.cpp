@@ -21,7 +21,7 @@ namespace Estados
             gC.set_jogadores(&jogadores);
             gC.set_obstaculos(&obstaculos);
             criarJogadores();
-            //criarInimigos();
+            criarInimigos();
         }
         Fase::~Fase()
         {
@@ -117,6 +117,7 @@ namespace Estados
             Entidades::Entidade* aux = nullptr;
 
             bool jogadores_iniciados = jogadores.get_tamanho() > 0;
+            bool inimigos_iniciados = inimigos.get_tamanho() > 0;
 
             int j = 0;
             for (int i = 0; std::getline(arquivo, linha); i++)
@@ -147,6 +148,14 @@ namespace Estados
                         if (aux)
                             jogadores.incluir(aux);
                     }
+                    break;
+                    case 'i':
+                    std::cout << "Inimigo" << std::endl;
+                        if(!inimigos_iniciados){
+                            aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Inimigo_Facil(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
+                            if (aux)
+                                inimigos.incluir(aux);
+                        }
                     break;
                     default:
                         break;
