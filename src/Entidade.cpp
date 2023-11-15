@@ -17,7 +17,7 @@ namespace Entidades
     {
         
     }
-    void Entidade::colidir(Entidade* outro)
+    void Entidade::colidir(Entidade* outro, int side)
     {
     }
     void Entidade::setPosicao(sf::Vector2f p)

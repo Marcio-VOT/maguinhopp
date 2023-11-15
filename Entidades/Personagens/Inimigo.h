@@ -15,7 +15,7 @@ namespace Entidades
             virtual void mover() = 0;
             virtual void executar() = 0;
             virtual void salvar(std::ostringstream* entrada);
-            virtual void colidir(Entidades::Entidade* outro);
+            virtual void colidir(Entidade* outro, int side = -1);
         };
     }
 }

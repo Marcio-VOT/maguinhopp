@@ -13,15 +13,29 @@ namespace Entidades
         {
             
         }
-        void Inimigo::colidir(Entidades::Entidade* outro){
+        void Inimigo::colidir(Entidade* outro, int side){
             if(outro == nullptr || ataque_tempo < ataque_tempo_max)
                 return;
             
-            if(outro->get_id() == IDs::IDs::jgd1 || outro->get_id() == IDs::IDs::jgd2){
-                Entidades::Personagens::Personagem* p = dynamic_cast<Entidades::Personagens::Personagem*>(outro);
+            Personagem* p = nullptr;
+            
+            switch (outro->get_id())
+            {
+            case IDs::IDs::jgd1:
+            case IDs::IDs::jgd2:
+                p = dynamic_cast<Entidades::Personagens::Personagem*>(outro);
+                if(p == nullptr)
+                    return;
                 p->set_vida(p->get_vida() - dano);
                 ataque_tempo = 0.f;
                 std::cout << "Inimigo::colidir" << "dano:" << dano << "pVida:" << p->get_vida() << std::endl;
+                break;
+                case IDs::IDs::vazio:
+                /* code */
+                break;
+            
+            default:
+                break;
             }
         }
         void Inimigo::salvar(std::ostringstream* entrada)
