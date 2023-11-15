@@ -15,6 +15,7 @@ namespace Entidades
             corpo.setSize(sf::Vector2f(LARGURA_SLIME, ALTURA_SLIME));
             corpo.setOrigin(sf::Vector2f((LARGURA_SLIME-TAM)/2, (ALTURA_SLIME-TAM)/2));
             set_and_load_textura(SKIN_BLUE_SLIME);
+            set_dano(2);
         }
         
         Inimigo_Facil::~Inimigo_Facil()
@@ -24,6 +25,8 @@ namespace Entidades
         void Inimigo_Facil::executar()
         {
             mover();
+            if(ataque_tempo < ataque_tempo_max)
+                ataque_tempo += 0.03;
         }
 
         void Inimigo_Facil::mover()

@@ -42,13 +42,14 @@ namespace Estados
             }
 
             nlohmann::json json = nlohmann::json::parse(arquivo);
-
+            Entidades::Personagens::Jogador* jogador1 = nullptr;
+            Entidades::Personagens::Jogador* jogador2 = nullptr;
             for (auto it = json.begin(); it != json.end(); ++it)
             {
                 switch (static_cast<IDs::IDs>((*it)["id"]))
                 {
                 case IDs::IDs::jgd1:
-                    jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(
+                    jogador1 = new Entidades::Personagens::Jogador(
                     sf::Vector2f(
                         (float) ((*it)["posicao"][0]), 
                         (float) ((*it)["posicao"][1])
@@ -57,10 +58,12 @@ namespace Estados
                         (float) ((*it)["velocidade"][0]),
                         (float) ((*it)["velocidade"][1])
                                 )
-                    )));
+                    );
+                    jogador1->updateId(IDs::IDs::jgd1);
+                    jogadores.incluir(static_cast<Entidades::Entidade*>(jogador1));
                     break;
                 case IDs::IDs::jgd2:
-                    jogadores.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2(
+                    jogador2 = new Entidades::Personagens::Jogador(
                     sf::Vector2f(
                         (float) ((*it)["posicao"][0]), 
                         (float) ((*it)["posicao"][1])
@@ -69,7 +72,9 @@ namespace Estados
                         (float) ((*it)["velocidade"][0]),
                         (float) ((*it)["velocidade"][1])
                                 )
-                    )));
+                    );
+                    jogador2->updateId(IDs::IDs::jgd2);
+                    jogadores.incluir(static_cast<Entidades::Entidade*>(jogador2));
                     break;
                 default:
                     break;
@@ -137,16 +142,22 @@ namespace Estados
                         // Jogador1
                     case '1':
                         if(!jogadores_iniciados){
-                        aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
-                        if (aux)
+                        Entidades::Personagens::Jogador* jgd = new Entidades::Personagens::Jogador(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0));
+                        aux = static_cast<Entidades::Entidade*>(jgd);
+                        if (aux){
+                            jgd->updateId(IDs::IDs::jgd1);
                             jogadores.incluir(aux);
+                        };
                         }
                     break;
                     case '2':
                     if(!jogadores_iniciados){
-                        aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Jogador2(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
-                        if (aux)
+                        Entidades::Personagens::Jogador* jgd = new Entidades::Personagens::Jogador(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0));
+                        aux = static_cast<Entidades::Entidade*>(jgd);
+                        if (aux){
+                            jgd->updateId(IDs::IDs::jgd2);
                             jogadores.incluir(aux);
+                        };
                     }
                     break;
                     case 'i':

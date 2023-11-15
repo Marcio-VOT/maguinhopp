@@ -2,7 +2,6 @@
 
 #include "../../Entidades/Entidade.h"
 #include "../../Entidades/Personagens/Jogador.h"
-#include "../../Entidades/Personagens/Jogador2.h"
 #include "../../Entidades/Obstaculos/Obst_Facil.h"
 #include "../../Entidades/Personagens/Inimigo_Facil.h"
 #include "../../Listas/ListaEntidades.h"

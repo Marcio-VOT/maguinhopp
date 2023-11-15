@@ -4,12 +4,13 @@ namespace Entidades
 {
     namespace Personagens
     {
-        int Personagem::max_vel = 5;
-        Personagem::Personagem(sf::Vector2f pos, sf::Vector2f vel, IDs::IDs id):
-        Entidade(pos, id),
-        pontos_de_vida(50)
+        Personagem::Personagem(sf::Vector2f pos, sf::Vector2f vel, IDs::IDs id, int vel_max):
+        Entidade(pos, id, vel_max),
+        pontos_de_vida(50),
+        ataque_tempo(0.f),
+        dano(0),
+        ataque_tempo_max(2.f)
         {
-
         }
         Personagem::~Personagem()
         {

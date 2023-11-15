@@ -4,11 +4,12 @@
 
 namespace Entidades
 {
-    Entidade::Entidade(sf::Vector2f pos, IDs::IDs id):
+    Entidade::Entidade(sf::Vector2f pos, IDs::IDs id, int max_vel):
     Ente(sf::Vector2f(TAM, TAM), id),
     posicao(pos),
     nochao(false),
-    velocidade(sf::Vector2f(0.f, 0.f))
+    velocidade(sf::Vector2f(0.f, 0.f)),
+    max_vel(max_vel)
     {
         corpo.setPosition(posicao);
     }

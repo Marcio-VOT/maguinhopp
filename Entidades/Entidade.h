@@ -10,11 +10,13 @@ namespace Entidades
     class Entidade: public Ente
     {
     protected:
-        sf::Vector2f posicao;
-        bool nochao;
         sf::Vector2f velocidade;
+        sf::Vector2f posicao;
+        const int max_vel;
+        bool nochao;
+
     public:
-        Entidade(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), IDs::IDs id  = IDs::IDs::vazio);
+        Entidade(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), IDs::IDs id  = IDs::IDs::vazio, int max_vel = 5);
         ~Entidade();
         virtual void executar()=0;
         virtual void colidir(Entidade* outro);
@@ -23,6 +25,9 @@ namespace Entidades
         void setPosicao(sf::Vector2f p);
         void setNochao(bool n) { nochao = n; }
         const sf::Vector2f getVelocidade () const { return velocidade; }
+        const bool getNoChao() const { return nochao; }
+        void setNoChao(bool n) { nochao = n; }
+        const int getMaxVelocidade() const { return max_vel; }
         void setVelocidade(sf::Vector2f v);
         virtual void salvar(std::ostringstream* entrada)
         {

@@ -1,6 +1,6 @@
 #include "../Entidades/Personagens/Jogador2.h"
 
-#define SKIN_JOGADOR "./public/assets/Jogadores/mago.png"
+#define SKIN_JOGADOR "./public/assets/Jogadores/Jogador2.png"
 #define ALTURA_JOGADOR 85.0f
 #define LARGURA_JOGADOR 60.0f
 #include <iostream>
@@ -30,8 +30,6 @@ namespace Entidades
         }
         void Jogador2::mover()
         {
-            //flag para definir se o personagem se moveu
-            bool f = false;
             sf::Vector2f velocidade_inicial = velocidade;
 
             if (!nochao)
