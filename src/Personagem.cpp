@@ -9,7 +9,8 @@ namespace Entidades
         pontos_de_vida(50),
         ataque_tempo(0.f),
         dano(0),
-        ataque_tempo_max(2.f)
+        ataque_tempo_max(2.f),
+        _movimentacao(nullptr)
         {
         }
         Personagem::~Personagem()

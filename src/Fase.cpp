@@ -59,7 +59,7 @@ namespace Estados
                         (float) ((*it)["velocidade"][1])
                                 )
                     );
-                    jogador1->updateId(IDs::IDs::jgd1);
+                    jogador1->updatePlayerId(IDs::IDs::jgd1);
                     jogadores.incluir(static_cast<Entidades::Entidade*>(jogador1));
                     break;
                 case IDs::IDs::jgd2:
@@ -73,7 +73,7 @@ namespace Estados
                         (float) ((*it)["velocidade"][1])
                                 )
                     );
-                    jogador2->updateId(IDs::IDs::jgd2);
+                    jogador2->updatePlayerId(IDs::IDs::jgd2);
                     jogadores.incluir(static_cast<Entidades::Entidade*>(jogador2));
                     break;
                 default:
@@ -145,7 +145,7 @@ namespace Estados
                         Entidades::Personagens::Jogador* jgd = new Entidades::Personagens::Jogador(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0));
                         aux = static_cast<Entidades::Entidade*>(jgd);
                         if (aux){
-                            jgd->updateId(IDs::IDs::jgd1);
+                            jgd->updatePlayerId(IDs::IDs::jgd1);
                             jogadores.incluir(aux);
                         };
                         }
@@ -155,7 +155,7 @@ namespace Estados
                         Entidades::Personagens::Jogador* jgd = new Entidades::Personagens::Jogador(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0));
                         aux = static_cast<Entidades::Entidade*>(jgd);
                         if (aux){
-                            jgd->updateId(IDs::IDs::jgd2);
+                            jgd->updatePlayerId(IDs::IDs::jgd2);
                             jogadores.incluir(aux);
                         };
                     }

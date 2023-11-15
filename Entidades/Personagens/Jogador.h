@@ -14,15 +14,11 @@ namespace Entidades
         {
         private:
             int pontos;
-            Movimentacoes::Movimentacao* _movimentacao;
             
         public:
             Jogador(sf::Vector2f pos = sf::Vector2f(0, 0), sf::Vector2f vel = sf::Vector2f(0, 0));
             ~Jogador();
-            void setMovimentacao(Movimentacoes::Movimentacao* movimentacao){
-                _movimentacao = movimentacao;
-            };
-            void updateId(IDs::IDs id);
+            void updatePlayerId(IDs::IDs id);
             void executar();
             void mover();
             void salvar(std::ostringstream* entrada);

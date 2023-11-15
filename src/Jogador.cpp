@@ -18,12 +18,11 @@ namespace Entidades
     {
         Jogador::Jogador(sf::Vector2f pos, sf::Vector2f vel):
         Personagem(pos, vel, IDs::IDs::jgd1),
-        pontos(0),
-        _movimentacao(&Movimentacoes::Jogador1_movimentacao::getInstance())
+        pontos(0)
         {
           corpo.setSize(sf::Vector2f(LARGURA_JOGADOR, ALTURA_JOGADOR));
           corpo.setOrigin(sf::Vector2f((LARGURA_JOGADOR-TAM)/2, (ALTURA_JOGADOR-TAM)/2));
-          set_and_load_textura(SKIN_JOGADOR1);
+          updatePlayerId(IDs::IDs::jgd1);
         }
         Jogador::~Jogador()
         {
@@ -32,7 +31,7 @@ namespace Entidades
         {
             mover();
         }
-        void Jogador::updateId(IDs::IDs id){
+        void Jogador::updatePlayerId(IDs::IDs id){
                 this->id = id;
                 switch (id)
                 {
