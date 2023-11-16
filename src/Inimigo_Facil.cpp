@@ -10,7 +10,7 @@ namespace Entidades
 
 
         Inimigo_Facil::Inimigo_Facil(sf::Vector2f pos, sf::Vector2f vel):
-        Inimigo(pos, vel, IDs::IDs::slime)
+        Inimigo(pos, vel, IDs::IDs::slime_blue)
         {
             corpo.setSize(sf::Vector2f(LARGURA_SLIME, ALTURA_SLIME));
             corpo.setOrigin(sf::Vector2f((LARGURA_SLIME-TAM)/2, (ALTURA_SLIME-TAM)/2));

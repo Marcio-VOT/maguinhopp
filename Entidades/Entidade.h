@@ -23,7 +23,6 @@ namespace Entidades
         const sf::Vector2f getPosicao() const { return corpo.getPosition(); }
         const sf::Vector2f getTamanho() const { return corpo.getSize(); }
         void setPosicao(sf::Vector2f p);
-        void setNochao(bool n) { nochao = n; }
         const sf::Vector2f getVelocidade () const { return velocidade; }
         const bool getNoChao() const { return nochao; }
         void setNoChao(bool n) { nochao = n; }
