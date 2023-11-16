@@ -111,6 +111,8 @@ namespace Gerenciadores
             fabs((pos1.y - pos2.y)) - ((tam1.y + tam2.y)/ 2.f)
         );
 
+        
+
         if (d.x < 0 && d.y < 0)
         {
 

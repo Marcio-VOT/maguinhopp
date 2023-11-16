@@ -21,6 +21,7 @@ namespace Entidades
             void updatePlayerId(IDs::IDs id);
             void executar();
             void mover();
+            void colidir(Entidade* outro, int side = -1);
             void salvar(std::ostringstream* entrada);
         };
     }

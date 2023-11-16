@@ -30,6 +30,8 @@ namespace Entidades
         void Jogador::executar()
         {
             mover();
+            if(ataque_tempo < ataque_tempo_max)
+                ataque_tempo += 0.03;
         }
         void Jogador::updatePlayerId(IDs::IDs id){
                 this->id = id;
@@ -59,6 +61,11 @@ namespace Entidades
         {
             Personagem::salvar(entrada);
             (*entrada) << ", \"pontos\": " << pontos << " }" << std::endl;
+        }
+        void Jogador::colidir(Entidade* outro, int side)
+        {
+            
+            Personagem* p = nullptr;
         }
     }
 }
