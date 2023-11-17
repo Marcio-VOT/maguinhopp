@@ -4,7 +4,7 @@
 
 namespace Entidades
 {
-    class Projetil
+    class Projetil : public Entidade
     {
     private:
     public:

@@ -121,7 +121,7 @@ namespace Gerenciadores
                 if (pos1.y <= pos2.y)
                 {
                     e1->setPosicao(sf::Vector2f(e1->getPosicao().x, e2->getPosicao().y - (tam1.y + tam2.y) / 2));
-                    e1->setNochao(true);
+                    e1->setNoChao(true);
                     e1->setVelocidade(sf::Vector2f(e1->getVelocidade().x, -e1->getVelocidade().y * CR));
                     return 4;
                 }

@@ -10,13 +10,10 @@ namespace Controladores {
 
     public:
         Observer();
-
         virtual ~Observer();
-        
+    
         virtual void notificaPressionado(std::string key) = 0;
-
         virtual void notificaSolto(std::string key) = 0;
-
     };
 
 }

@@ -64,7 +64,6 @@ namespace Entidades
         }
         void Jogador::colidir(Entidade* outro, int side)
         {
-            
             Personagem* p = nullptr;
         }
     }
