@@ -31,6 +31,7 @@ namespace Entidades
                 Entidade::salvar(entrada);
                 (*entrada) << ", \"pontos_de_vida\": " << pontos_de_vida;
             }
+            bool neutralizado() const { return pontos_de_vida <= 0; };
         };
     }
     

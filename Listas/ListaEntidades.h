@@ -18,6 +18,8 @@ namespace Listas
         // void percorrer();
         void desenhar();
         void executar();
+        void remover(Entidades::Entidade* pE);
+        void remover_neutralizados();
         Lista<Entidades::Entidade>::Iterador get_primeiro();
     };
 }

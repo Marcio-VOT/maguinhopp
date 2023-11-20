@@ -23,6 +23,8 @@ namespace Estados
             jogadores.desenhar();
             inimigos.desenhar();
             obstaculos.desenhar();
+            removeNeutralizados();
+            
         }
     }    
 }

@@ -35,6 +35,7 @@ namespace Estados
             void gerenciar_colisoes();
             void criarJogadores();
             void criarInimigos();
+            void removeNeutralizados();
             // Substituído
             // void criarObstMedios();
             void criarCenario(std::string caminho);

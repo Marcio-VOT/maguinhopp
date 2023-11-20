@@ -27,7 +27,11 @@ namespace Estados
         {
             salvar();
         }
-
+        void Fase::removeNeutralizados()
+        {
+            jogadores.remover_neutralizados();
+            inimigos.remover_neutralizados();
+        }
         void Fase::gerenciar_colisoes()
         {
             gC.colisao_simples();

@@ -6,9 +6,12 @@ Gerenciadores::Gerenciador_Grafico* Ente::pGG(Gerenciadores::Gerenciador_Grafico
 
 Ente::Ente(sf::Vector2f tam, IDs::IDs id):
 id(id),
-corpo(tam)
+corpo(tam),
+numeroTotal(total++)
 {
 }
+
+int Ente::total = 1;
 
 Ente::~Ente()
 {

@@ -9,6 +9,8 @@ class Ente
 {
 protected:
   IDs::IDs id;
+  static int total;
+  int numeroTotal;
   static Gerenciadores::Gerenciador_Grafico* pGG;
   sf::RectangleShape corpo;
   sf::Texture textura;
@@ -31,5 +33,6 @@ public:
   virtual void salvar(std::ostringstream* entrada) {
     (*entrada) << "{ \"id\":" << std::to_string(static_cast<int>(id));
   }
-
+  virtual bool neutralizado() const { return false; };
+  const bool operator==(const Ente* ente) const { return this->numeroTotal == ente->numeroTotal; };
 };
