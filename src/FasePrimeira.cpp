@@ -21,7 +21,12 @@ namespace Estados
             inimigos.executar();
             gerenciar_colisoes();
             removeNeutralizados();
-            pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
+            if(jogadores.get_tamanho() == 0)
+            {
+                // pEstados->trocarEstado(new Estados::Fases::FasePrimeira());
+            }
+            else
+                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
             jogadores.desenhar();
             inimigos.desenhar();
             obstaculos.desenhar();
