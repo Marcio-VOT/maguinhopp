@@ -28,6 +28,13 @@ namespace Entidades
         void setNoChao(bool n) { nochao = n; }
         const int getMaxVelocidade() const { return max_vel; }
         void setVelocidade(sf::Vector2f v);
+        virtual void aplicaGravidade()
+        {
+            if (!this->getNoChao())
+                this->setVelocidade(this->getVelocidade() + sf::Vector2f(0, 0.1));
+            else
+                this->setVelocidade(sf::Vector2f(this->getVelocidade().x, 0.f));
+        };
         virtual void salvar(std::ostringstream* entrada)
         {
             Ente::salvar(entrada);

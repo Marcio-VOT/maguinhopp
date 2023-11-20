@@ -1,4 +1,4 @@
-#include "../Listas/ListaEntidades.h"
+#include "../Listas/ListaEntidades.h"   
  #include <iostream>
 namespace Listas
 {
@@ -37,20 +37,20 @@ namespace Listas
             aux++;
         }        
     }
-    void ListaEntidades::remover(Entidades::Entidade* pE)
-    {
-        // LEs.remover(pE);
-    }
     void ListaEntidades::remover_neutralizados()
     {
-        Lista<Entidades::Entidade>::Iterador aux = LEs.get_primeiro();
-        while (aux != nullptr)
+        Lista<Entidades::Entidade>::Iterador aux1 = LEs.get_primeiro(), aux2 = nullptr;
+        while (aux1 != nullptr)
         {
-            if ((*aux)->neutralizado())
+            if ((*aux1)->neutralizado())
             {
-                LEs.remover(aux.get_atual());
+                aux2 = aux1;
+                aux2++;
+                LEs.remover(aux1.get_atual());
+                aux1 = aux2;
+            }else{
+            aux1++;
             }
-            aux++;
         }
     }
     Lista<Entidades::Entidade>::Iterador ListaEntidades::get_primeiro()

@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 namespace Listas
 {
@@ -31,8 +32,8 @@ namespace Listas
                 pAnt = nullptr; 
             }
             TE* get_pinfo() const { return pinfo; }
-            Elemento<TE>* get_pProx() { return pProx; }
-            Elemento<TE>* get_pAnt() { return pAnt; } 
+            Elemento<TE>* get_pProx() const { return pProx; }
+            Elemento<TE>* get_pAnt() const { return pAnt; } 
 
             void set_pinfo(TE* pi) { if (pi) { pinfo = pi; } }
             void set_pProx(Elemento<TE>* pP) { if (pP) { pProx = pP; } } 
@@ -67,39 +68,27 @@ namespace Listas
             }
             void remover(const Elemento<TL>* elem)
             {
-                if (!elem || !pPrimeiro)
+                if (elem == nullptr || pPrimeiro == nullptr)
                     return;
 
-                Elemento<TL>* atual = pPrimeiro;
-                Elemento<TL>* anterior = nullptr;
+                Elemento<TL>* anterior = elem->get_pAnt();
+                Elemento<TL>* proximo = elem->get_pProx();
 
-                while (atual != nullptr && !(atual->get_pinfo() == elem->get_pinfo())) {
-                    anterior = atual;
-                    atual = atual->get_pProx();
+                if (anterior != nullptr)
+                {
+                    anterior->set_pProx(proximo);
+                    if (proximo != nullptr)
+                        proximo->set_pAnt(anterior);
+                }
+                else
+                {
+                    pPrimeiro = proximo;
+                    if (proximo != nullptr)
+                        proximo->set_pAnt(nullptr);
                 }
 
-                if (atual == nullptr) {
-                    // Elemento não encontrado
-                    return;
-                }
-
-                if (anterior == nullptr) {
-                    // Remover o primeiro elemento
-                    pPrimeiro = atual->get_pProx();
-                    if (pPrimeiro) {
-                        pPrimeiro->set_pAnt(nullptr);
-                    }
-                } else {
-                    // Remover um elemento que não é o primeiro
-                    anterior->set_pProx(atual->get_pProx());
-                    if (atual->get_pProx()) {
-                        atual->get_pProx()->set_pAnt(anterior);
-                    }
-                }
-
-                delete atual;
+                delete elem;
                 tamanho--;
-                return;
             }
             const int get_tamanho() const
             {
@@ -138,12 +127,12 @@ namespace Listas
                 }
                 Iterador& operator++()
                 {
-                    atual = atual->get_pProx();
+                    atual = atual->get_pProx();   
                     return *this;
                 }
                 Iterador& operator++(int)
                 {
-                    atual = atual->get_pProx();
+                    atual = atual->get_pProx();   
                     return *this;
                 }
                 bool operator==(const Elemento<TL>* outro) const
