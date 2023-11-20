@@ -22,10 +22,7 @@ namespace Gerenciadores
         void set_inimigos(Listas::ListaEntidades *i) { if (i) { inimigos = i; }}
         void colidiu_janela(Entidades::Entidade* jgd1, Entidades::Entidade* jgd2);
         void colisao_simples();
-        // Tipos de colisão em relação à e1: 0 - sem colisão, 1 - pela esquerda, 2 - por cima, 3 - pela direita, 4 - por baixo.
-        // Melhor trocar por um enum depois:
         int colidiu(Entidades::Entidade* e1, Entidades::Entidade* e2);
-        int colidiu_bilateral(Entidades::Entidade* e1, Entidades::Entidade* e2);
 
     };
 }

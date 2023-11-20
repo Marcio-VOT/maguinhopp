@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "Gerenciadores/Gerenciador_Grafico.h"
 #include <sstream>
+#include <iostream>
 #include "IDs.h"
 
 class Ente

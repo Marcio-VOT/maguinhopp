@@ -26,7 +26,7 @@ namespace Entidades
             void set_vida(int p) { pontos_de_vida = p; }
             void setDanoRecebido(int dano) { pontos_de_vida -= dano; }
             const void set_dano(int d) { dano = d; }
-            const int get_dano() const { return dano; }
+            virtual int get_dano() const { return dano; }
             virtual void salvar(std::ostringstream* entrada){
                 Entidade::salvar(entrada);
                 (*entrada) << ", \"pontos_de_vida\": " << pontos_de_vida;

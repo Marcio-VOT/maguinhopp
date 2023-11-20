@@ -3,176 +3,200 @@
 
 namespace Listas
 {
-    template<class TL>
+    template <class TL>
     class Lista
     {
     private:
-        // Classe aninhada privada
         template <class TE>
         class Elemento
         {
         private:
             TE* pinfo;
             Elemento<TE>* pProx;
-            Elemento<TE>* pAnt; 
+            Elemento<TE>* pAnt;
 
         public:
-            Elemento():
-            pinfo(nullptr),
-            pProx(nullptr),
-            pAnt(nullptr)
-            {
+            Elemento() : pinfo(nullptr), pProx(nullptr), pAnt(nullptr) {}
+            ~Elemento() {
+                delete pinfo;
+            }
 
-            }
-            ~Elemento()
-            {
-                if (pinfo)
-                    delete pinfo;
-                pProx = nullptr;
-                pAnt = nullptr; 
-            }
             TE* get_pinfo() const { return pinfo; }
             Elemento<TE>* get_pProx() const { return pProx; }
-            Elemento<TE>* get_pAnt() const { return pAnt; } 
+            Elemento<TE>* get_pAnt() const { return pAnt; }
 
-            void set_pinfo(TE* pi) { if (pi) { pinfo = pi; } }
-            void set_pProx(Elemento<TE>* pP) { if (pP) { pProx = pP; } } 
-            void set_pAnt(Elemento<TE>* pA) { if (pA) { pAnt = pA; } } 
+            void set_pinfo(TE* pi) { pinfo = pi; }
+            void set_pProx(Elemento<TE>* pP) { pProx = pP; }
+            void set_pAnt(Elemento<TE>* pA) { pAnt = pA; }
         };
+
+    private:
+        Elemento<TL>* pPrimeiro;
+        int tamanho;
+
+    public:
+        Lista() : pPrimeiro(nullptr), tamanho(0) {}
+
+        ~Lista() {
+            limpar();
+        }
+
+        void limpar() {
+            while (pPrimeiro) {
+                Elemento<TL>* aux = pPrimeiro;
+                pPrimeiro = pPrimeiro->get_pProx();
+                delete aux;
+            }
+            tamanho = 0;
+        }
+
+        bool vazia() const {
+            return tamanho == 0;
+        }
+
+        void remover(const Elemento<TL>* elem) {
+            if (elem == nullptr || pPrimeiro == nullptr)
+                return;
+
+            Elemento<TL>* anterior = elem->get_pAnt();
+            Elemento<TL>* proximo = elem->get_pProx();
+
+            if (anterior != nullptr)
+                anterior->set_pProx(proximo);
+            else
+                pPrimeiro = proximo;
+
+            if (proximo != nullptr)
+                proximo->set_pAnt(anterior);
+
+            delete elem;
+
+            tamanho--;
+        }
+
+        const int get_tamanho() const {
+            return tamanho;
+        }
+
+        void incluir(TL* elem) {
+            if (!elem)
+                return;
+
+            Elemento<TL>* novoElemento = new Elemento<TL>();
+            novoElemento->set_pinfo(elem);
+
+            if (pPrimeiro != nullptr) {
+                pPrimeiro->set_pAnt(novoElemento);
+            }
+
+            novoElemento->set_pProx(pPrimeiro);
+            pPrimeiro = novoElemento;
+            tamanho++;
+        }
+
+        class Iterador
+        {
         private:
-            Elemento<TL>* pPrimeiro;
-            int tamanho;
+            Elemento<TL>* atual;
+            Lista<TL>* lista;
+
         public:
-            Lista():
-            pPrimeiro(nullptr),
-            tamanho(0)
-            {
+            Iterador(Elemento<TL>* a = nullptr, Lista<TL>* l = nullptr) : atual(a), lista(l) {}
 
-            }
-            ~Lista()
-            {
-                limpar();
-            }
-            void limpar()
-            {
-                Elemento<TL>* aux = nullptr;
-                while(pPrimeiro)
-                {
-                    aux = pPrimeiro;
-                    pPrimeiro = pPrimeiro->get_pProx();
-                    if (aux)
-                        delete aux;
-                }
-                tamanho = 0;
-                pPrimeiro = nullptr;
-            }
-            void remover(const Elemento<TL>* elem)
-            {
-                if (elem == nullptr || pPrimeiro == nullptr)
-                    return;
+            ~Iterador() {}
 
-                Elemento<TL>* anterior = elem->get_pAnt();
-                Elemento<TL>* proximo = elem->get_pProx();
+            Iterador& operator++() {
+                if (atual != nullptr) {
+                    atual = atual->get_pProx();
 
-                if (anterior != nullptr)
-                {
-                    anterior->set_pProx(proximo);
-                    if (proximo != nullptr)
-                        proximo->set_pAnt(anterior);
-                }
-                else
-                {
-                    pPrimeiro = proximo;
-                    if (proximo != nullptr)
-                        proximo->set_pAnt(nullptr);
-                }
-
-                delete elem;
-                tamanho--;
-            }
-            const int get_tamanho() const
-            {
-                return tamanho;
-            }
-            void incluir(TL* elem)
-            {
-                if (!elem)
-                    return;
-                Elemento<TL>* aux = new Elemento<TL>();
-                if (aux)
-                {
-                    aux->set_pinfo(elem);
-                    if (pPrimeiro != nullptr) {
-                        pPrimeiro->set_pAnt(aux);
+                    if (atual == nullptr) {
+                        lista = nullptr;
                     }
-                    aux->set_pProx(pPrimeiro);
-                    pPrimeiro = aux;
-                    tamanho++;
                 }
+                return *this;
             }
-            // Classe aninhada pública:
-            class Iterador
-            {
-            private:
-                Elemento<TL>* atual;
-            public:
-                Iterador(Elemento<TL>* a = nullptr):
-                atual(a)
-                {
 
-                }
-                ~Iterador()
-                {
-                    atual = nullptr;
-                }
-                Iterador& operator++()
-                {
-                    atual = atual->get_pProx();   
-                    return *this;
-                }
-                Iterador& operator++(int)
-                {
-                    atual = atual->get_pProx();   
-                    return *this;
-                }
-                bool operator==(const Elemento<TL>* outro) const
-                {
-                    return atual == outro;
-                }
-                Iterador& operator--()
-                {
-                    if (atual != nullptr) {
-                        atual = atual->get_pAnt();
-                    }
-                    return *this;
-                }
-                Iterador& operator--(int)
-                {
-                    if (atual != nullptr) {
-                        atual = atual->get_pAnt();
-                    }
-                    return *this;
-                }
-                bool operator!=(const Elemento<TL>* outro) const
-                {
-                    return !(atual == outro);
-                }
-                void operator=(const Elemento<TL>* outro)
-                {
-                    atual = outro;
-                }
-                TL* operator*()
-                {
-                    return atual->get_pinfo();
-                }
-                const Elemento<TL>* get_atual() const
-                {
-                    return atual;
-                }
-            };
-            Iterador get_primeiro()
-            {
-                return Iterador(pPrimeiro);
+            Iterador operator++(int) {
+                Iterador temp = *this;
+                ++(*this);
+                return temp;
             }
+
+            bool operator==(const Elemento<TL>* outro) const {
+                return atual == outro;
+            }
+
+            bool operator!=(const Elemento<TL>* outro) const {
+                return !(atual == outro);
+            }
+
+            void operator=(const Elemento<TL>* outro) {
+                atual = outro;
+            }
+
+            TL* operator*() {
+                return (atual != nullptr && atual->get_pinfo() != nullptr) ? atual->get_pinfo() : nullptr;
+            }
+
+            const Elemento<TL>* get_atual() const {
+                return atual;
+            }
+        };
+
+        Iterador get_primeiro() {
+            return Iterador(pPrimeiro, this);
+        }
+
+        void setPrimeiro(Elemento<TL>* primeiro) {
+            pPrimeiro = primeiro;
+        }
+
+        void decrementarTamanho() {
+            tamanho--;
+        }
+
+        TL* operator[](int index) {
+            Elemento<TL>* current = pPrimeiro;
+            for (int i = 0; i < index && current; ++i) {
+                current = current->get_pProx();
+            }
+            if (current) {
+                return current->get_pinfo();
+            } else {
+                // Pode ser apropriado lançar uma exceção ou retornar um valor padrão.
+                return nullptr;
+            }
+        }
+
+        void inserirNaPosicao(int posicao, TL* elem) {
+            if (!elem || posicao < 0 || posicao > tamanho) {
+                return;
+            }
+
+            Elemento<TL>* novoElemento = new Elemento<TL>();
+            novoElemento->set_pinfo(elem);
+
+            if (posicao == 0) {
+                if (pPrimeiro != nullptr) {
+                    pPrimeiro->set_pAnt(novoElemento);
+                }
+                novoElemento->set_pProx(pPrimeiro);
+                pPrimeiro = novoElemento;
+            } else {
+                Elemento<TL>* current = pPrimeiro;
+                for (int i = 0; i < posicao - 1; ++i) {
+                    current = current->get_pProx();
+                }
+
+                novoElemento->set_pProx(current->get_pProx());
+                novoElemento->set_pAnt(current);
+                if (current->get_pProx() != nullptr) {
+                    current->get_pProx()->set_pAnt(novoElemento);
+                }
+                current->set_pProx(novoElemento);
+            }
+
+            tamanho++;
+        }
     };
 }
