@@ -30,10 +30,7 @@ namespace Entidades
         void setVelocidade(sf::Vector2f v);
         virtual void aplicaGravidade()
         {
-            if (!this->getNoChao())
-                this->setVelocidade(this->getVelocidade() + sf::Vector2f(0, 0.1));
-            else
-                this->setVelocidade(sf::Vector2f(this->getVelocidade().x, 0.f));
+            this->setVelocidade(this->getVelocidade() + sf::Vector2f(0, 0.1));
         };
         virtual void salvar(std::ostringstream* entrada)
         {
