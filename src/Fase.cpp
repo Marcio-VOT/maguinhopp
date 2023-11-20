@@ -95,7 +95,7 @@ namespace Estados
 
             for (auto it = json.begin(); it != json.end(); ++it)
             {
-                inimigos.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Inimigo_Facil(
+                inimigos.incluir(static_cast<Entidades::Entidade*>(new Entidades::Personagens::Gosma_Verde(
                     sf::Vector2f(
                         (float) ((*it)["posicao"][0]), 
                         (float) ((*it)["posicao"][1])
@@ -163,7 +163,7 @@ namespace Estados
                     case 'i':
                     std::cout << "Inimigo" << std::endl;
                         if(!inimigos_iniciados){
-                            aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Inimigo_Facil(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
+                            aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Gosma_Verde(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
                             if (aux)
                                 inimigos.incluir(aux);
                         }

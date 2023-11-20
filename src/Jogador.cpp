@@ -65,6 +65,24 @@ namespace Entidades
         void Jogador::colidir(Entidade* outro, int side)
         {
             Personagem* p = nullptr;
+            switch (outro->get_id())
+            {
+            case IDs::IDs::slime_blue:
+            case IDs::IDs::pumpkin:
+            if(side == 4 || side == 2){
+            p = dynamic_cast<Personagem*>(outro);
+            if(ataque_tempo >= ataque_tempo_max){
+                std::cout << "ataque do player para com inimigo" << std::endl;
+                p->set_vida(0);
+                ataque_tempo = 0;
+            }
+            }
+            break;
+            
+            default:
+                break;
+            }
+        
         }
     }
 }

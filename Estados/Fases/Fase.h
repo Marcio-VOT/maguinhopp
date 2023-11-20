@@ -3,7 +3,7 @@
 #include "../../Entidades/Entidade.h"
 #include "../../Entidades/Personagens/Jogador.h"
 #include "../../Entidades/Obstaculos/Obst_Facil.h"
-#include "../../Entidades/Personagens/Inimigo_Facil.h"
+#include "../../Entidades/Personagens/Gosma_Verde.h"
 #include "../../Listas/ListaEntidades.h"
 #include "../../Gerenciadores/Gerenciador_Colisoes.h"
 #include "../Estado.h"
