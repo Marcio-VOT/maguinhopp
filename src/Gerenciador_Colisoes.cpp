@@ -136,7 +136,7 @@ namespace Gerenciadores
     {
         sf::Vector2f pos1 = e1->getPosicao();
         sf::Vector2f pos2 = e2->getPosicao();
-        sf::Vector2f tam1 = e1->getTamanho() / 2.f; 
+        sf::Vector2f tam1 = e1->getTamanho() / 2.f;
         sf::Vector2f tam2 = e2->getTamanho() / 2.f;
 
         sf::Vector2f diferenca = pos1 - pos2;
@@ -170,7 +170,7 @@ namespace Gerenciadores
         case Baixo:
             entidadeMovel->setPosicao(sf::Vector2f(entidadeMovel->getPosicao().x, entidadeImovel->getPosicao().y - (alturaMovel + alturaImovel)/2.f));
             entidadeMovel->setNoChao(true);
-            entidadeMovel->setVelocidade(sf::Vector2f(entidadeMovel->getVelocidade().x, -entidadeMovel->getVelocidade().y * CR));
+            entidadeMovel->setVelocidade(sf::Vector2f(entidadeMovel->getVelocidade().x, 0));
             break;
         case Cima:
             entidadeMovel->setPosicao(sf::Vector2f(entidadeMovel->getPosicao().x, entidadeImovel->getPosicao().y + (alturaMovel + alturaImovel)/2.f));
@@ -215,15 +215,15 @@ namespace Gerenciadores
             entidadeMovel1->setPosicao(sf::Vector2f(entidadeMovel1->getPosicao().x + diferenca_x/4.f, entidadeMovel1->getPosicao().y));
             entidadeMovel2->setPosicao(sf::Vector2f(entidadeMovel2->getPosicao().x - diferenca_x/4.f, entidadeMovel2->getPosicao().y));
 
-            entidadeMovel1->setVelocidade(sf::Vector2f(+diferenca_x/4.f, entidadeMovel1->getVelocidade().y));
-            entidadeMovel2->setVelocidade(sf::Vector2f(-diferenca_x/4.f, entidadeMovel2->getVelocidade().y));
+            entidadeMovel1->setVelocidade(sf::Vector2f(+diferenca_x/8.f, entidadeMovel1->getVelocidade().y));
+            entidadeMovel2->setVelocidade(sf::Vector2f(-diferenca_x/8.f, entidadeMovel2->getVelocidade().y));
         break;
         case Direita:
             entidadeMovel1->setPosicao(sf::Vector2f(entidadeMovel1->getPosicao().x - diferenca_x/4.f, entidadeMovel1->getPosicao().y));
             entidadeMovel2->setPosicao(sf::Vector2f(entidadeMovel2->getPosicao().x + diferenca_x/4.f, entidadeMovel2->getPosicao().y));
 
-            entidadeMovel1->setVelocidade(sf::Vector2f(-diferenca_x/4.f, entidadeMovel1->getVelocidade().y));
-            entidadeMovel2->setVelocidade(sf::Vector2f(+diferenca_x/4.f, entidadeMovel2->getVelocidade().y));
+            entidadeMovel1->setVelocidade(sf::Vector2f(-diferenca_x/8.f, entidadeMovel1->getVelocidade().y));
+            entidadeMovel2->setVelocidade(sf::Vector2f(+diferenca_x/8.f, entidadeMovel2->getVelocidade().y));
         break;
         }
     }

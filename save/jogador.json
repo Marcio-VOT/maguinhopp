@@ -1,2 +1,3 @@
-[{ "id":2, "posicao": [2745.58,232.5], "velocidade": [-0.005,-0.0166667], "pontos_de_vida": 47, "pontos": 0 }
+[{ "id":2, "posicao": [1883.05,812.5], "velocidade": [0.001,0], "pontos_de_vida": 50, "pontos": 0 }
+,{ "id":1, "posicao": [2282.9,812.5], "velocidade": [0,0], "pontos_de_vida": 50, "pontos": 0 }
 ]

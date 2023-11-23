@@ -6,6 +6,10 @@
 #include <iostream>
 #include "IDs.h"
 
+// Largura e Altura padrão para as entidades
+#define TAM 90.f
+
+
 class Ente
 {
 protected:
@@ -18,7 +22,7 @@ protected:
   sf::Texture invTextura;
 
 public:
-  Ente(sf::Vector2f tam = sf::Vector2f(60.f, 85.f), IDs::IDs id = IDs::IDs::vazio);
+  Ente(sf::Vector2f tam = sf::Vector2f(TAM, TAM), IDs::IDs id = IDs::IDs::vazio);
   ~Ente();
   virtual void executar() = 0;
   void desenhar();

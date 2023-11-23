@@ -2,9 +2,6 @@
 
 #include "../Ente.h"
 
-// Largura e Altura padrão para as entidades
-#define TAM 50.f
-
 namespace Entidades
 {
     class Entidade: public Ente

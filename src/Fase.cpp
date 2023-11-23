@@ -132,21 +132,29 @@ namespace Estados
             for (int i = 0; std::getline(arquivo, linha); i++)
             {
                 j = 0;
+                int pit = 0;
                 for (char tipo : linha)
                 {
-
                     switch (tipo)
                     {
                         // Plataforma:
                     case '0':    
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obst_Facil(sf::Vector2f(j * TAM, i * TAM)));
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obst_Facil(sf::Vector2f(j * TAM + (TAM * pit * 3), i * TAM)));
+                        if (aux)
+                            obstaculos.incluir(aux);
+                    break;
+                    case 'p':    
+                        pit++;
+                    break;
+                    case '-':    
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obst_Facil(sf::Vector2f(j * TAM + (TAM * pit * 3), i * TAM)));
                         if (aux)
                             obstaculos.incluir(aux);
                     break;
                         // Jogador1
                     case '1':
                         if(!jogadores_iniciados){
-                        Entidades::Personagens::Jogador* jgd = new Entidades::Personagens::Jogador(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0));
+                        Entidades::Personagens::Jogador* jgd = new Entidades::Personagens::Jogador(sf::Vector2f(j * TAM , i * TAM), sf::Vector2f(0,0));
                         aux = static_cast<Entidades::Entidade*>(jgd);
                         if (aux){
                             jgd->updatePlayerId(IDs::IDs::jgd1);
@@ -156,7 +164,7 @@ namespace Estados
                     break;
                     case '2':
                     if(!jogadores_iniciados){
-                        Entidades::Personagens::Jogador* jgd = new Entidades::Personagens::Jogador(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0));
+                        Entidades::Personagens::Jogador* jgd = new Entidades::Personagens::Jogador(sf::Vector2f(j * TAM , i * TAM), sf::Vector2f(0,0));
                         aux = static_cast<Entidades::Entidade*>(jgd);
                         if (aux){
                             jgd->updatePlayerId(IDs::IDs::jgd2);
