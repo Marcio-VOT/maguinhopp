@@ -26,7 +26,7 @@ namespace Estados
                 // pEstados->trocarEstado(new Estados::Fases::FasePrimeira());
             }
             else
-                pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
+            pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
             jogadores.desenhar();
             inimigos.desenhar();
             obstaculos.desenhar();

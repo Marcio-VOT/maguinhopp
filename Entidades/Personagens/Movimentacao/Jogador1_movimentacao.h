@@ -30,6 +30,7 @@ namespace Entidades {
                 velocidade += sf::Vector2f(0, -5.f); 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 velocidade += sf::Vector2f(0, 0.1);
+
                 
             if(velocidade.x != velocidade_inicial.x){
                 if(velocidade.x > 0)

@@ -1,9 +1,9 @@
 #pragma once
 
 #include <list>
-#include <map>
 #include <SFML/Graphics.hpp>
 #include <string>
+#include <map>
 
 namespace Controladores {
     class Observer;
@@ -16,6 +16,7 @@ namespace Gerenciadores {
         std::list<Controladores::Observer*> observers;
         std::list<Controladores::Observer*>::iterator it;
         std::map<sf::Keyboard::Key, std::string> keyMap;
+
         static Entrada* Instancia;
 
         Entrada();
@@ -31,9 +32,7 @@ namespace Gerenciadores {
 
         void handleKeyPressed(sf::Keyboard::Key key);
 
-        void handleKeyReleased(sf::Keyboard::Key key);
-
-        std::string getKeyasString(sf::Keyboard::Key key);
+        std::string getKeyComoString(sf::Keyboard::Key key);
     };
 
 } // namespace Managers
