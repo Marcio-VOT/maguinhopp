@@ -11,10 +11,15 @@ namespace Estados
     }
     Estado::~Estado()
     {
-
+        pGE = nullptr;
     }
     int Estado::get_id() const
     {
         return id;
+    }
+
+    void Estado::mudarEstado(int i)
+    {
+        pGE->setEstadoAtual(i);
     }
 }

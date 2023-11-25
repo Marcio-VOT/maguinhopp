@@ -17,7 +17,6 @@ namespace Estados
 {
     namespace Fases
     {
-        // Abstrata - Ente
         class Fase: public Ente, public Estado
         {
         protected:
@@ -36,8 +35,6 @@ namespace Estados
             void criarJogadores();
             void criarInimigos();
             void removeNeutralizados();
-            // Substituído
-            // void criarObstMedios();
             void criarCenario(std::string caminho);
             void salvar();
         };

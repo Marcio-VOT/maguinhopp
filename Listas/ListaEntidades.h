@@ -15,10 +15,8 @@ namespace Listas
         ~ListaEntidades();
         void incluir(Entidades::Entidade* pE);
         const int get_tamanho() const;
-        // void percorrer();
         void desenhar();
         void executar();
-        void remover(Entidades::Entidade* pE);
         void remover_neutralizados();
         Lista<Entidades::Entidade>::Iterador get_primeiro();
     };

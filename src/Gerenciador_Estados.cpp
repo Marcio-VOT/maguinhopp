@@ -14,10 +14,9 @@ namespace Gerenciadores
     }
 
     Gerenciador_Estados::Gerenciador_Estados():
-    estadoAtual(1)
+    estadoAtual(1),
+    ultimoEstado(0)
     {
-        // Colocar aqui o número de estados que você possui:
-        estados.resize(2);
     }
 
     Gerenciador_Estados::~Gerenciador_Estados()
@@ -28,19 +27,17 @@ namespace Gerenciadores
 
     void Gerenciador_Estados::setEstadoAtual(int i)
     {
+        ultimoEstado = estadoAtual;
         estadoAtual = i;
+        // estados[estadoAtual]->executar();
     }
 
     void Gerenciador_Estados::addEstado (Estados::Estado* pEstado)
     {
-        if (pEstado)
-            if (!estados.at(pEstado->get_id()))
-                estados.at(pEstado->get_id()) = pEstado;
-            else
-            {
-                delete estados.at(pEstado->get_id());
-                estados.at(pEstado->get_id()) = pEstado;
-            }
+        if (pEstado == nullptr) {
+            exit(1);
+        }
+        estados[pEstado->get_id()] = pEstado;
     }
 
     void Gerenciador_Estados::executar()

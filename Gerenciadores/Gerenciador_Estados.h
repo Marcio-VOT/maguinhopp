@@ -1,6 +1,7 @@
 #pragma once
 
-#include <vector>
+#include <map>
+#include <stdlib.h>
 
 namespace Estados
 {
@@ -18,7 +19,8 @@ namespace Gerenciadores
     {
     private:
         int estadoAtual;
-        std::vector<Estados::Estado*> estados;
+        int ultimoEstado;
+        std::map<int, Estados::Estado*> estados;
         static Gerenciador_Estados* instancia;
         
         Gerenciador_Estados();
@@ -26,8 +28,12 @@ namespace Gerenciadores
         ~Gerenciador_Estados();
         
         static Gerenciador_Estados* get_instancia();
-        void setEstadoAtual (int i);
+        void setEstadoAtual (int i) ;
+        void atualizaEstadoAtual (){};
+        void exibeEstadoAtual (){};
+        int getEstadoAtual_id () const { return estadoAtual; }
         void addEstado (Estados::Estado* pEstado);
+        int getUltimoEstado_id () const { return ultimoEstado; }
         void executar();
     };
 }
