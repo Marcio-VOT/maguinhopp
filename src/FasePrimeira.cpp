@@ -51,6 +51,7 @@ namespace Estados
         {
             jogadores.executar();
             inimigos.executar();
+            obstaculos.executar();
             gerenciar_colisoes();
             removeNeutralizados();
 

@@ -11,5 +11,6 @@
     mapa, //6
     tabua, //7
     dot50, //8
+    plataforma, //9
   };
 }

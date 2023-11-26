@@ -132,26 +132,46 @@ namespace Estados
             for (int i = 0; std::getline(arquivo, linha); i++)
             {
                 j = 0;
-                int pit = 0;
                 for (char tipo : linha)
                 {
+                
+                char tipoPlat;
+                int randNum = rand() % 3; // Gera um número aleatório entre 0 e 2
+
+                switch(randNum) {
+                    case 0:
+                        tipoPlat = 'p';
+                        break;
+                    case 1:
+                        tipoPlat = 'm';
+                        break;
+                    case 2:
+                        tipoPlat = 'g';
+                        break;
+                }
+
                     switch (tipo)
                     {
-                        // Plataforma:
                     case '0':    
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obst_Facil(sf::Vector2f(j * TAM + (TAM * pit * 3), i * TAM)));
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obst_Facil(sf::Vector2f(j * TAM + (TAM), i * TAM)));
                         if (aux)
                             obstaculos.incluir(aux);
                     break;
-                    case 'p':    
-                        pit++;
+                    case 't':    
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Tabua(sf::Vector2f(j * TAM + (TAM), i * TAM)));
+                        if (aux)
+                            obstaculos.incluir(aux);
                     break;
                     case '-':    
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obst_Facil(sf::Vector2f(j * TAM + (TAM * pit * 3), i * TAM)));
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obst_Facil(sf::Vector2f(j * TAM + (TAM), i * TAM)));
                         if (aux)
                             obstaculos.incluir(aux);
                     break;
-                        // Jogador1
+                    case 'p':
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Plataforma(sf::Vector2f(j * TAM + (TAM), i * TAM), tipoPlat));
+                        if (aux)
+                            obstaculos.incluir(aux);
+                    break;
                     case '1':
                         if(!inicializado){
                         Entidades::Personagens::Jogador* jgd = new Entidades::Personagens::Jogador(sf::Vector2f(j * TAM , i * TAM), sf::Vector2f(0,0));

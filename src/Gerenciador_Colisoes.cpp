@@ -137,7 +137,7 @@ namespace Gerenciadores
         sf::Vector2f pos1 = e1->getPosicao();
         sf::Vector2f pos2 = e2->getPosicao();
         sf::Vector2f tam1 = e1->getTamanho() / 2.f;
-        sf::Vector2f tam2 = e2->getTamanho() / 2.f;
+        sf::Vector2f tam2 = e2->getTamanho() / 2.f; 
 
         sf::Vector2f diferenca = pos1 - pos2;
         sf::Vector2f sobreposicao = sf::Vector2f(

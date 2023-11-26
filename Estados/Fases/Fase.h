@@ -2,9 +2,14 @@
 
 #include "../../Entidades/Entidade.h"
 #include "../../Entidades/Personagens/Jogador.h"
+
 #include "../../Entidades/Obstaculos/Obst_Facil.h"
+#include "../../Entidades/Obstaculos/Tabua.h"
+#include "../../Entidades/Obstaculos/Plataforma.h"
+
 #include "../../Entidades/Personagens/Gosma_Verde.h"
 #include "../../Entidades/Personagens/Gosma_Nuclear.h"
+
 #include "../../Listas/ListaEntidades.h"
 #include "../../Gerenciadores/Gerenciador_Colisoes.h"
 #include "../Estado.h"
