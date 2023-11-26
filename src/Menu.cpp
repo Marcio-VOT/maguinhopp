@@ -28,7 +28,10 @@ namespace Estados
 
       void Menu::baixo()
       {
-        if (ativo) {
+        if(selecionado < 0){
+          selecionado = 0;
+        }
+        if ( ativo ) {
             botoes[selecionado]->seleciona(false);
             selecionado++;
             selecionado = selecionado % botoes.size();
@@ -38,7 +41,10 @@ namespace Estados
 
       void Menu::cima()
       {
-        if (ativo) {
+        if(selecionado < 0){
+          selecionado = 0;
+        }
+        if (ativo ) {
             botoes[selecionado]->seleciona(false);
               selecionado--;
             if(selecionado < 0)

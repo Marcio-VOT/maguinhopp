@@ -45,12 +45,10 @@ namespace Estados
 
             if(inimigos.get_tamanho() < 1 && primeira)
             {
-                std::cout << "Fim de jogo entrou" << std::endl;
                 terminar();
                 atualizaId(Estado::get_id() -1);
                 setPrimeira(false);
                 mudarEstado(1);
-                std::cout << "Fim de jogo saiu" << std::endl;
                 return;
             }else if(inimigos.get_tamanho() < 1 && !primeira)
             {

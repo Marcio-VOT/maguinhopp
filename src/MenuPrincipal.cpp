@@ -88,7 +88,7 @@ namespace Estados {
                       mudarEstado(1);
                       break;
                   case 3:
-                      mudarEstado(1);
+                      pGG->get_Janela()->close();
                       break;
                   case -1:
                       ativo = true;
@@ -98,6 +98,9 @@ namespace Estados {
                   default:
                       break;
                   }
+                  botoes[selecionado]->seleciona(false);
+                  selecionado = 0;
+                  botoes[selecionado]->seleciona(true);
               }
           }
 

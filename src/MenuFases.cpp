@@ -18,7 +18,6 @@ namespace Estados {
 
             selecionado = 0;
             botoes[selecionado]->seleciona(true);
-            std::cout << "MenuFases criado" << std::endl;
           }
   
           MenuFases::~MenuFases() {
@@ -47,6 +46,7 @@ namespace Estados {
                       plvl->inicializar();
                       plvl->setPrimeira(true);
                       mudarEstado(1);
+
                       break;
                   case -1:
                       ativo = true;
