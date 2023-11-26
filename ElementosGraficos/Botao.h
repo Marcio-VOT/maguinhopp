@@ -7,7 +7,7 @@ namespace ElementosGraficos {
 
   class Botao : public Elemento {
     private:
-      Texto textoInfo;
+      Texto* textoInfo;
       // sf::Texture* texuraPadrão;
       // sf::Texture* texuraSelecionado;
     public:

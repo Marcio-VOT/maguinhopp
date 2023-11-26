@@ -25,6 +25,7 @@ namespace Estados
             Listas::ListaEntidades inimigos;
             Gerenciadores::Gerenciador_Colisoes gC;
             std::ostringstream buffer;
+            bool fimDeJogo;
 
         public:
             Fase(int i = - 1);
@@ -37,6 +38,8 @@ namespace Estados
             void removeNeutralizados();
             void criarCenario(std::string caminho);
             void salvar();
+            virtual void resetaEstado() = 0;
+            virtual void desenha() = 0;
         };
     }    
 }

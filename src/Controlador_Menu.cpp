@@ -1,5 +1,6 @@
 #include "../Controladores/Controlador_Menu.h"
 #include "../Estados/Menus/Menu.h"
+#include "../Estados/Menus/Pausa.h"
 
 
 
@@ -26,8 +27,8 @@ namespace Controladores{
         if (key == "Enter")
             pMenu->executar();
         if (key == "Escape"){
-            // if (dynamic_cast<Menus::PauseMenuState*>(pMenu) != nullptr)
-            //     dynamic_cast<Menus::PauseMenuState*>(pMenu)->TriggerPauseMenu();
+            if (dynamic_cast<Estados::Menus::Pausa*>(pMenu) != nullptr)
+                dynamic_cast<Estados::Menus::Pausa*>(pMenu)->AtivaMenuPausa();
         }
     }
 

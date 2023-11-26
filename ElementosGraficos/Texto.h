@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-#define FONT_PATH "../assets/fonts/MainFont.ttf"
+#define FONT_PATH "./public/assets/fonts/MainFont.ttf"
 
 namespace ElementosGraficos {
 

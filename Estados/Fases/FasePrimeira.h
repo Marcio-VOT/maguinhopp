@@ -17,6 +17,9 @@ namespace Estados
             ~FasePrimeira();
 
             void executar();
+            void resetaEstado();
+            void desenha();
+            void atualiza();
         };
     }    
 }

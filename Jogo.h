@@ -7,6 +7,7 @@
 #include "Gerenciadores/Gerenciador_Estados.h"
 #include "Gerenciadores/Gerenciador_Eventos.h"
 #include "Estados/Fases/FasePrimeira.h"
+#include "Estados/Menus/Pausa.h"
 
 class Jogo
 {

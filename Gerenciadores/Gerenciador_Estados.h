@@ -28,12 +28,12 @@ namespace Gerenciadores
         ~Gerenciador_Estados();
         
         static Gerenciador_Estados* get_instancia();
-        void setEstadoAtual (int i) ;
-        void atualizaEstadoAtual (){};
-        void exibeEstadoAtual (){};
-        int getEstadoAtual_id () const { return estadoAtual; }
-        void addEstado (Estados::Estado* pEstado);
-        int getUltimoEstado_id () const { return ultimoEstado; }
         void executar();
+        void setEstadoAtual (int i) ;
+        void executaEstadoAtual ();
+        void exibeEstadoAtual ();
+        void addEstado (Estados::Estado* pEstado);
+        int getEstadoAtual_id () const { return estadoAtual; }
+        int getUltimoEstado_id () const { return ultimoEstado; }
     };
 }

@@ -53,6 +53,11 @@ namespace Listas
             }
         }
     }
+
+    void ListaEntidades::limpar()
+    {
+        LEs.limpar();
+    }
     Lista<Entidades::Entidade>::Iterador ListaEntidades::get_primeiro()
     {
         return LEs.get_primeiro();

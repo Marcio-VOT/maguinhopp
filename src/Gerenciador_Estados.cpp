@@ -29,7 +29,7 @@ namespace Gerenciadores
     {
         ultimoEstado = estadoAtual;
         estadoAtual = i;
-        // estados[estadoAtual]->executar();
+        estados[estadoAtual]->resetaEstado();
     }
 
     void Gerenciador_Estados::addEstado (Estados::Estado* pEstado)
@@ -40,8 +40,19 @@ namespace Gerenciadores
         estados[pEstado->get_id()] = pEstado;
     }
 
+    void Gerenciador_Estados::executaEstadoAtual()
+    {
+        estados[estadoAtual]->atualiza();
+    }
+
+    void Gerenciador_Estados::exibeEstadoAtual()
+    {
+        estados[estadoAtual]->desenha();
+    }
+
     void Gerenciador_Estados::executar()
     {
-        estados[estadoAtual]->executar();
+        executaEstadoAtual();
+        exibeEstadoAtual();
     }
 }

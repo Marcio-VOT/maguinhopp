@@ -15,6 +15,11 @@ namespace Estados
 
         }
 
+        void FasePrimeira::atualiza()
+        {
+            executar();
+        }
+
         void FasePrimeira::executar()
         {
             jogadores.executar();
@@ -27,6 +32,23 @@ namespace Estados
             }
             else
             pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
+        }
+
+        void FasePrimeira::resetaEstado()
+        {
+            if(fimDeJogo){
+            jogadores.limpar();
+            inimigos.limpar();
+            obstaculos.limpar();
+            criarJogadores();
+            criarInimigos();
+            criarCenario(ARQUIVO_CENARIO_1);
+            }
+            pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
+        }
+
+        void FasePrimeira::desenha()
+        {
             jogadores.desenhar();
             inimigos.desenhar();
             obstaculos.desenhar();

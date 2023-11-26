@@ -7,6 +7,7 @@ pEventos(Gerenciadores::Gerenciador_Eventos::get_instancia()),
 pEstados(Gerenciadores::Gerenciador_Estados::get_instancia())
 {
     Estados::Fases::FasePrimeira* fase1 = new Estados::Fases::FasePrimeira();
+    Estados::Menus::Pausa* pausa = new Estados::Menus::Pausa(fase1);
     executar();
 }
 

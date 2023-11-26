@@ -4,13 +4,19 @@ namespace Estados
 {
     namespace Menus
     {
-      Menu::Menu()
+
+      Menu::Menu(int id):
+      Estado(id),
+      pGG(Gerenciadores::Gerenciador_Grafico::get_instancia()),
+      selecionado(0),
+      control(this),
+      min(0),
+      max(2),
+      ativo(false)
       {
-        selecionado = 0;
-        min = 0;
-        max = 0;
-        ativo = false;
       }
+
+      
 
       Menu::~Menu(){
         ElementosGraficos::Botao* bt = NULL;
@@ -25,22 +31,22 @@ namespace Estados
       void Menu::baixo()
       {
         if (ativo) {
-            // botoes[selecionado]->seleciona(false);
+            botoes[selecionado]->seleciona(false);
             selecionado++;
             if (selecionado > max)
                 selecionado = min;
-            // botoes[selecionado]->seleciona(true);
+            botoes[selecionado]->seleciona(true);
         }
       }
 
       void Menu::cima()
       {
         if (ativo) {
-            // botoes[selecionado]->seleciona(false);
+            botoes[selecionado]->seleciona(false);
             selecionado--;
             if (selecionado < min)
                 selecionado = max;
-            // botoes[selecionado]->seleciona(true);
+            botoes[selecionado]->seleciona(true);
         }
       }
 

@@ -26,8 +26,9 @@ namespace Gerenciadores
 
     void Gerenciador_Grafico::desenhar(sf::Drawable *pD)
     {
-        if (pD)
+        if (pD != nullptr){
             janela->draw(*pD);
+        }
     }
     // Propaganda:
     void Gerenciador_Grafico::desenharTextura(sf::Texture* pT)

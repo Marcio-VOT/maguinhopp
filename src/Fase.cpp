@@ -15,7 +15,8 @@ namespace Estados
         jogadores(),
         obstaculos(),
         inimigos(),
-        Estado(i)
+        Estado(i),
+        fimDeJogo(false)
         {
             gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);

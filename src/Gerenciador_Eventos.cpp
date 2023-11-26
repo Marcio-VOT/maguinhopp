@@ -7,7 +7,8 @@ namespace Gerenciadores
     Gerenciador_Eventos* Gerenciador_Eventos::instancia(nullptr);
 
     Gerenciador_Eventos::Gerenciador_Eventos():
-    pGrafico(Gerenciador_Grafico::get_instancia())
+    pGrafico(Gerenciador_Grafico::get_instancia()),
+    pGE(Entrada::getInstancia())
     {
 
     }
@@ -30,7 +31,7 @@ namespace Gerenciadores
                 pGrafico->fecharJanela();
                 break;
             case sf::Event::KeyPressed:
-                // Dica: Padrão observer.
+                pGE->handleKeyPressed(evento.key.code);
                 break;
             default:
                 break;

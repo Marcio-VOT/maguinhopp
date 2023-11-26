@@ -9,7 +9,7 @@ namespace ElementosGraficos {
     class Elemento {
     protected:
         sf::RectangleShape body;
-        static Gerenciadores::Gerenciador_Grafico* pGG;
+        Gerenciadores::Gerenciador_Grafico* pGG;
 
     public:
         Elemento();

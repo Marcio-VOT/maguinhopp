@@ -1,9 +1,10 @@
 #include "../ElementosGraficos/Texto.h"
+#include <iostream>
 
 namespace ElementosGraficos{
   Gerenciadores::Gerenciador_Grafico* Texto::pGG(Gerenciadores::Gerenciador_Grafico::get_instancia());
   
-  Texto::Texto(sf::Vector2f position, std::string info, const char* path): fonte(nullptr){
+  Texto::Texto(sf::Vector2f position, std::string info, const char* path): fonte(nullptr), texto(){
     this->info = info;
     getFonte(path);
     texto.setFont((*fonte));

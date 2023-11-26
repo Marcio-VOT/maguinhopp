@@ -1,10 +1,10 @@
 #include "../Estados/Estado.h"
+#include <iostream>
 
 namespace Estados
 {
-    Gerenciadores::Gerenciador_Estados* Estado::pGE(Gerenciadores::Gerenciador_Estados::get_instancia());
-
     Estado::Estado(int i):
+    pGE(Gerenciadores::Gerenciador_Estados::get_instancia()),
     id(i)
     {
         pGE->addEstado(this);
@@ -21,5 +21,6 @@ namespace Estados
     void Estado::mudarEstado(int i)
     {
         pGE->setEstadoAtual(i);
+        std::cout << "Estado mudado para " << i << std::endl;
     }
 }
