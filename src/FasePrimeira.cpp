@@ -6,12 +6,18 @@ namespace Estados
     namespace Fases
     {
         FasePrimeira::FasePrimeira(int id, int quantidadeJogadores):
-        Fase(id, quantidadeJogadores)
+        Fase(id, quantidadeJogadores),
+        caminho(ARQUIVO_CENARIO_1),
+        idMapa(id)
         {
-            if(id == 1)
-            caminho = ARQUIVO_CENARIO_1;
-            else
-            caminho = ARQUIVO_CENARIO_2;
+            if(id == 1){
+                caminho = ARQUIVO_CENARIO_1;
+                idMapa = 1;
+            }
+            else{
+                caminho = ARQUIVO_CENARIO_2;
+                idMapa = 2;
+            }
         }
         FasePrimeira::~FasePrimeira()
         {
@@ -23,12 +29,17 @@ namespace Estados
             criarCenario(caminho);
         }
 
-        void FasePrimeira::atualizaId(int id)
+        void FasePrimeira::atualizaMapaId(int id)
         {
-            if(id == 1)
-            caminho = ARQUIVO_CENARIO_1;
-            else
-            caminho = ARQUIVO_CENARIO_2;
+            if(id == 1){
+                caminho = ARQUIVO_CENARIO_1;
+                idMapa = 1;
+
+            }
+            else{
+                caminho = ARQUIVO_CENARIO_2;
+                idMapa = 2;
+            }
         }
 
         void FasePrimeira::atualiza()
@@ -46,7 +57,12 @@ namespace Estados
             if(inimigos.get_tamanho() < 1 && primeira)
             {
                 terminar();
-                atualizaId(Estado::get_id() -1);
+
+                if(idMapa == 1)
+                atualizaMapaId(2);
+                else
+                atualizaMapaId();
+
                 setPrimeira(false);
                 mudarEstado(1);
                 return;

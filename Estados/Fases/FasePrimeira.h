@@ -14,6 +14,7 @@ namespace Estados
         {
         private:
             std::string caminho;
+            int idMapa;
         public:
             FasePrimeira(int id = 1, int quantidadeJogadores = 1);
             ~FasePrimeira();
@@ -23,7 +24,7 @@ namespace Estados
             void desenha();
             void atualiza();
             void inicializar();
-            void atualizaId(int id = 1);
+            void atualizaMapaId(int id = 1);
         };
     }    
 }

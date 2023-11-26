@@ -36,7 +36,7 @@ namespace Estados
 
             virtual void executar() = 0;
             virtual void inicializar() = 0;
-            virtual void atualizaId(int id = 1) = 0;
+            virtual void atualizaMapaId(int id = 1) = 0;
             void gerenciar_colisoes();
             void setPrimeira(bool primeira){
                 this->primeira = primeira;

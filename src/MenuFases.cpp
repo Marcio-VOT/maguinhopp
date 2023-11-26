@@ -36,13 +36,13 @@ namespace Estados {
                   switch (selecionado)
                   {
                   case 0:
-                      plvl->atualizaId(1);
+                      plvl->atualizaMapaId(1);
                       plvl->inicializar();
                       plvl->setPrimeira(true);
                       mudarEstado(1);     
                       break;
                   case 1:
-                      plvl->atualizaId(2);
+                      plvl->atualizaMapaId(2);
                       plvl->inicializar();
                       plvl->setPrimeira(true);
                       mudarEstado(1);
