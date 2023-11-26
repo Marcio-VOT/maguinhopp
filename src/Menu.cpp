@@ -10,8 +10,6 @@ namespace Estados
       pGG(Gerenciadores::Gerenciador_Grafico::get_instancia()),
       selecionado(0),
       control(this),
-      min(0),
-      max(2),
       ativo(false)
       {
       }
@@ -33,8 +31,7 @@ namespace Estados
         if (ativo) {
             botoes[selecionado]->seleciona(false);
             selecionado++;
-            if (selecionado > max)
-                selecionado = min;
+            selecionado = selecionado % botoes.size();
             botoes[selecionado]->seleciona(true);
         }
       }
@@ -43,9 +40,11 @@ namespace Estados
       {
         if (ativo) {
             botoes[selecionado]->seleciona(false);
-            selecionado--;
-            if (selecionado < min)
-                selecionado = max;
+              selecionado--;
+            if(selecionado < 0)
+              selecionado = botoes.size()-1;
+            
+            selecionado = selecionado % botoes.size();
             botoes[selecionado]->seleciona(true);
         }
       }

@@ -12,6 +12,7 @@ namespace ElementosGraficos{
     texto.setPosition(position);
     texto.setCharacterSize(20);
     texto.setFillColor(sf::Color::White);
+    setAlinhamentodeTexto(AlinhamentodeTexto::esquerda);
   }
 
   Texto::~Texto(){

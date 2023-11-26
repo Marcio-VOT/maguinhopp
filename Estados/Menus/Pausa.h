@@ -2,8 +2,7 @@
 
 #include "./Menu.h"
 #include "../Fases/Fase.h"
-// #include "../Fases/FasePrimeira.h"
-// #include "../Fases/FasePrimeira.h"
+#include "../../Jogo.h"
 
 namespace Estados {
     namespace Menus {
@@ -17,16 +16,16 @@ namespace Estados {
 
             ~Pausa();
 
-            void desenha();
+            void atualiza() { 
+            }
 
-            void executar();
+            void desenha();
 
             void resetaEstado();
 
-            void AtivaMenuPausa();
+            void executar();
 
-            void atualiza() { 
-            }
+            void AtivaMenuPausa();
         };
 
     }

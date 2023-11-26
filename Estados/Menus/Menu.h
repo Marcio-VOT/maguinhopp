@@ -17,8 +17,6 @@ namespace Estados
         std::vector<ElementosGraficos::Botao*>::iterator it;
         Gerenciadores::Gerenciador_Grafico* pGG;
         int selecionado;
-        int min;
-        int max;
         Controladores::Controlador_Menu control;
         bool ativo;
 

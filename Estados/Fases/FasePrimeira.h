@@ -3,6 +3,7 @@
 #include "Fase.h"
 
 #define ARQUIVO_CENARIO_1 "Design/Fase1/Cenario/cenario1.txt"
+#define ARQUIVO_CENARIO_2 "Design/Fase1/Cenario/cenario1.txt"
 
 namespace Estados
 {
@@ -13,7 +14,7 @@ namespace Estados
         {
         private:
         public:
-            FasePrimeira();
+            FasePrimeira(int id = 1);
             ~FasePrimeira();
 
             void executar();

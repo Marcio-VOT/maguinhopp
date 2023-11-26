@@ -5,10 +5,13 @@ namespace Estados
 {
     namespace Fases
     {
-        FasePrimeira::FasePrimeira():
-        Fase(1)
+        FasePrimeira::FasePrimeira(int id):
+        Fase(id)
         {
+            if(id == 1)
             criarCenario(ARQUIVO_CENARIO_1);
+            else
+            criarCenario(ARQUIVO_CENARIO_2);
         }
         FasePrimeira::~FasePrimeira()
         {

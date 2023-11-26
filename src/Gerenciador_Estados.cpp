@@ -14,7 +14,7 @@ namespace Gerenciadores
     }
 
     Gerenciador_Estados::Gerenciador_Estados():
-    estadoAtual(1),
+    estadoAtual(0),
     ultimoEstado(0)
     {
     }

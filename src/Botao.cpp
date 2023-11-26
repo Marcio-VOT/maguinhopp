@@ -6,7 +6,7 @@ namespace ElementosGraficos {
   Botao::Botao(sf::Vector2f posicao, std::string info):
   Elemento() 
   {
-    body = sf::RectangleShape(sf::Vector2f(200, 50));
+    body = sf::RectangleShape(sf::Vector2f(250, 50));
     body.setPosition(posicao);
     body.setFillColor(sf::Color::White);
     body.setOutlineColor(sf::Color::Black);
