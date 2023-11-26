@@ -75,7 +75,6 @@ const void Ente::set_and_load_textura(const std::string& caminho, const std::str
     load_textura(caminho);
 
   if(invCaminho != ""){
-    std::cout << "Carregando textura invertida" << invCaminho << std::endl;
     load_inv_textura(invCaminho );
   }
   else

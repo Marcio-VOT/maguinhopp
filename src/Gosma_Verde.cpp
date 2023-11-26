@@ -68,7 +68,7 @@ namespace Entidades
                 if(p == nullptr)
                     return;
                 p->setDanoRecebido(get_dano());
-                std::cout << "Inimigo::colidir" << "dano:" << get_dano() << "pVida:" << p->get_vida() << std::endl;
+                // std::cout << "Inimigo::colidir" << "dano:" << get_dano() << "pVida:" << p->get_vida() << std::endl;
                 ataque_tempo = 0.f;
                 nivel_de_gosma = 0.f;
                 break;

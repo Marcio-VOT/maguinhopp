@@ -114,7 +114,6 @@ namespace Estados
         }
         void Fase::criarCenario(std::string caminho)
         {
-            std::cout << "Criando cenario" << std::endl;
             std::ifstream arquivo(caminho);
             if (!arquivo)
             {
@@ -173,7 +172,6 @@ namespace Estados
                     }
                     break;
                     case 'i':
-                    std::cout << "Inimigo" << std::endl;
                         if(!inimigos_iniciados){
                             aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Gosma_Verde(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
                             if (aux)

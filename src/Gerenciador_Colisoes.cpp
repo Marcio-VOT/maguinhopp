@@ -196,7 +196,6 @@ namespace Gerenciadores
         float alturaMovel2 = entidadeMovel2->getTamanho().y;
         float diferenca_x = fabs(larguraMovel1 - larguraMovel2);
         float diferenca_y = fabs(alturaMovel1 - alturaMovel2);
-        std::cout << diferenca_x << std::endl;
 
         switch (tipoColisao)
         {

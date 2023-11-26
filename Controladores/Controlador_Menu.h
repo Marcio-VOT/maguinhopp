@@ -1,8 +1,13 @@
 #pragma once
 
-#include "../Estados/Menus/Menu.h"
 #include "Observer.h"
 #include "../Gerenciadores/Gerenciador_Entrada.h"
+
+namespace Estados {
+    namespace Menus {
+        class Menu;
+    }
+}
 
 namespace Controladores {
 

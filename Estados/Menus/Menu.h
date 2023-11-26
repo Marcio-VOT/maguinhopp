@@ -2,14 +2,8 @@
 
 #include "../Estado.h"
 #include "../../Ente.h"
-
-namespace ElementosGraficos{
-    class Botao;
-}
-
-namespace Controladores {
-    class Controlador_Menu;
-}
+#include "../../ElementosGraficos/Botao.h"
+#include "../../Controladores/Controlador_Menu.h"
 
 namespace Estados
 {

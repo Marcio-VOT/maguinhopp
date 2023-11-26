@@ -1,4 +1,6 @@
 #include "../Controladores/Controlador_Menu.h"
+#include "../Estados/Menus/Menu.h"
+
 
 
 namespace Controladores{

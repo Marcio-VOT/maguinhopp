@@ -24,7 +24,17 @@ namespace Gerenciadores
         ~Gerenciador_Grafico();
 
         void desenharEnte(Ente* pE);
-        // Propaganda:
+        void desenhar(sf::Drawable* pD);
+        // create a getFonte method to get the font from a path and return it
+        sf::Font* getFonte(const std::string& path) {
+        sf::Font* fonte = new sf::Font();
+        if (!fonte->loadFromFile(path)) {
+            delete fonte;
+            throw std::runtime_error("Não foi possível carregar a fonte: " + path);
+        }
+        return fonte;
+        }   
+        
         void desenharTextura(sf::Texture* pT);
         const bool get_JanelaAberta() const;
         static Gerenciador_Grafico* get_instancia();

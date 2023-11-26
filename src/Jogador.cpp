@@ -72,7 +72,7 @@ namespace Entidades
             if(side == 4 || side == 2){
             p = dynamic_cast<Personagem*>(outro);
             if(ataque_tempo >= ataque_tempo_max){
-                std::cout << "ataque do player para com inimigo" << posicao.x << posicao.y << p->getPosicao().x << p->getPosicao().y <<  std::endl;
+                // std::cout << "ataque do player para com inimigo" << posicao.x << posicao.y << p->getPosicao().x << p->getPosicao().y <<  std::endl;
                 p->set_vida(0);
                 ataque_tempo = 0;
             }

@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-#define FONT_PATH "./assets/Fonts/MainFont.ttf"
+#define FONT_PATH "../assets/fonts/MainFont.ttf"
 
 namespace ElementosGraficos {
 
@@ -17,7 +17,7 @@ namespace ElementosGraficos {
     class Texto {
     private:
         std::string info;
-
+        sf::Font* fonte;
         sf::Text texto;
 
         static Gerenciadores::Gerenciador_Grafico* pGG;
@@ -29,21 +29,25 @@ namespace ElementosGraficos {
 
         void setTextoInfo(std::string info);
 
-        void setPosition(sf::Vector2f position);
+        void getFonte(const char* path);
 
-        void setTextoColor(const unsigned int R, const unsigned int G, const unsigned int B);
+        void setPosicao(sf::Vector2f position);
 
-        void setFontSize(const unsigned int size);
+        void setCorTexto(const unsigned int R, const unsigned int G, const unsigned int B);
+
+        void setCorTexto(sf::Color C);
+
+        void setTamanhoFonte(const unsigned int size);
 
         void setAlinhamentodeTexto(AlinhamentodeTexto option);
 
         sf::Vector2f getSize() const;
 
-        void render();
+        void desenha();
 
         std::string getInfo() const;
 
-        sf::Vector2f getPosition() const;
+        sf::Vector2f getPosicaon() const;
     };
 
 }
