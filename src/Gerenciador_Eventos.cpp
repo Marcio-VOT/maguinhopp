@@ -25,6 +25,7 @@ namespace Gerenciadores
     void Gerenciador_Eventos::executar()
     {
         while (pGrafico->get_Janela()->pollEvent(evento))
+            {               
             switch (evento.type)
             {
             case sf::Event::Closed:
@@ -36,5 +37,6 @@ namespace Gerenciadores
             default:
                 break;
             }
+        }
     }
 }

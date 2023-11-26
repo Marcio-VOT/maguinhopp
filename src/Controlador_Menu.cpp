@@ -26,6 +26,8 @@ namespace Controladores{
             pMenu->cima();
         if (key == "Enter")
             pMenu->executar();
+        if(key == "J")
+            pMenu->setJogador2();
         if (key == "Escape"){
             if (dynamic_cast<Estados::Menus::Pausa*>(pMenu) != nullptr)
                 dynamic_cast<Estados::Menus::Pausa*>(pMenu)->AtivaMenuPausa();

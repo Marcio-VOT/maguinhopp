@@ -28,6 +28,7 @@ namespace Estados
             virtual void executar() = 0;
             virtual void baixo();
             virtual void cima();
+            virtual void setJogador2(){};
             void atualizarCamera();
         };
     }

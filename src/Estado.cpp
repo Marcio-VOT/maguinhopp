@@ -21,6 +21,5 @@ namespace Estados
     void Estado::mudarEstado(int i)
     {
         pGE->setEstadoAtual(i);
-        std::cout << "Estado mudado para " << i << std::endl;
     }
 }

@@ -5,10 +5,11 @@
     vazio = 0, //0
     jgd1, //1
     jgd2, //2
-    slime_blue, //4
-    pumpkin, //4
-    mapa, //3
-    espinho, //3
-    dot50, //3
+    slime_green, //3
+    slime_red, //4
+    pumpkin, //5
+    mapa, //6
+    tabua, //7
+    dot50, //8
   };
 }

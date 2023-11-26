@@ -1,7 +1,7 @@
 #include "../Entidades/Personagens/Gosma_Verde.h"
 #include "../Entidades/Personagens/Movimentacao/Gosma_movimentacao.h"
 
-#define SKIN_BLUE_SLIME "./public/assets/Inimigos/slime-blue.png"
+#define SKIN_GREEN_SLIME "./public/assets/Inimigos/slime-green.png"
 #define ALTURA_SLIME 50.0f
 #define LARGURA_SLIME 50.0f
 namespace Entidades
@@ -11,12 +11,12 @@ namespace Entidades
 
         int Gosma_Verde::nivel_de_gosma_max = 3;
         Gosma_Verde::Gosma_Verde(sf::Vector2f pos, sf::Vector2f vel):
-        Inimigo(pos, vel, IDs::IDs::slime_blue),
+        Inimigo(pos, vel, IDs::IDs::slime_green),
         nivel_de_gosma(0.f)
         {
             corpo.setSize(sf::Vector2f(LARGURA_SLIME, ALTURA_SLIME));
             corpo.setOrigin(sf::Vector2f((LARGURA_SLIME-TAM)/2, (ALTURA_SLIME-TAM)/2));
-            set_and_load_textura(SKIN_BLUE_SLIME);
+            set_and_load_textura(SKIN_GREEN_SLIME);
             set_dano(3);
             setPontos(10);
             setMovimentacao(&Movimentacoes::Gosma_movimentacao::getInstance());

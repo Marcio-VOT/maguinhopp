@@ -67,13 +67,15 @@ namespace Entidades
             Personagem* p = nullptr;
             switch (outro->get_id())
             {
-            case IDs::IDs::slime_blue:
+            case IDs::IDs::slime_green:
             case IDs::IDs::pumpkin:
+            case IDs::IDs::slime_red:
             if(side == 4 || side == 2){
             p = dynamic_cast<Personagem*>(outro);
             if(ataque_tempo >= ataque_tempo_max){
-                // std::cout << "ataque do player para com inimigo" << posicao.x << posicao.y << p->getPosicao().x << p->getPosicao().y <<  std::endl;
-                p->set_vida(0);
+                if(p->get_vida() > 1)
+                    p->setDanoRecebido(p->get_vida()/2);
+                else p->setDanoRecebido(p->get_vida());
                 ataque_tempo = 0;
             }
             }

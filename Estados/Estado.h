@@ -9,7 +9,7 @@ namespace Estados
         MenuPrincipal = 0,
         Fase1, // 1
         Fase2, // 2
-        Jogando, // 3
+        MenuFases, // 3
         Pausa, // 4
         Configuracoes, // 5
         Placar, // 6

@@ -5,17 +5,30 @@ namespace Estados
 {
     namespace Fases
     {
-        FasePrimeira::FasePrimeira(int id):
-        Fase(id)
+        FasePrimeira::FasePrimeira(int id, int quantidadeJogadores):
+        Fase(id, quantidadeJogadores)
         {
             if(id == 1)
-            criarCenario(ARQUIVO_CENARIO_1);
+            caminho = ARQUIVO_CENARIO_1;
             else
-            criarCenario(ARQUIVO_CENARIO_2);
+            caminho = ARQUIVO_CENARIO_2;
         }
         FasePrimeira::~FasePrimeira()
         {
 
+        }
+
+        void FasePrimeira::inicializar()
+        {
+            criarCenario(caminho);
+        }
+
+        void FasePrimeira::atualizaId(int id)
+        {
+            if(id == 1)
+            caminho = ARQUIVO_CENARIO_1;
+            else
+            caminho = ARQUIVO_CENARIO_2;
         }
 
         void FasePrimeira::atualiza()
@@ -29,9 +42,27 @@ namespace Estados
             inimigos.executar();
             gerenciar_colisoes();
             removeNeutralizados();
+
+            if(inimigos.get_tamanho() < 1 && primeira)
+            {
+                std::cout << "Fim de jogo entrou" << std::endl;
+                terminar();
+                atualizaId(Estado::get_id() -1);
+                setPrimeira(false);
+                mudarEstado(1);
+                std::cout << "Fim de jogo saiu" << std::endl;
+                return;
+            }else if(inimigos.get_tamanho() < 1 && !primeira)
+            {
+                terminar();
+                mudarEstado(0);
+                return;
+            }
+            
             if(jogadores.get_tamanho() == 0)
             {
-                // pEstados->trocarEstado(new Estados::Fases::FasePrimeira());
+                terminar();
+                mudarEstado(0);
             }
             else
             pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
@@ -40,12 +71,8 @@ namespace Estados
         void FasePrimeira::resetaEstado()
         {
             if(fimDeJogo){
-            jogadores.limpar();
-            inimigos.limpar();
-            obstaculos.limpar();
-            criarJogadores();
-            criarInimigos();
-            criarCenario(ARQUIVO_CENARIO_1);
+            inicializar();
+            fimDeJogo = false;
             }
             pGG->centralizarCamera((*(jogadores.get_primeiro()))->getPosicao());
         }

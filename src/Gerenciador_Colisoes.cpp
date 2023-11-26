@@ -141,8 +141,8 @@ namespace Gerenciadores
 
         sf::Vector2f diferenca = pos1 - pos2;
         sf::Vector2f sobreposicao = sf::Vector2f(
-            fabs(diferenca.x) - (tam1.x + tam2.x),
-            fabs(diferenca.y) - (tam1.y + tam2.y)
+            fabs((pos1.x - pos2.x)) - (tam1.x + tam2.x),
+            fabs((pos1.y - pos2.y)) - (tam1.y + tam2.y)
         );
 
         if (sobreposicao.x < 0 && sobreposicao.y < 0)

@@ -14,6 +14,7 @@ namespace Gerenciadores
         static Gerenciador_Eventos* instancia;
         Gerenciador_Eventos();
         sf::Event evento;
+        float delay;
     public:
         ~Gerenciador_Eventos();
         void executar();     

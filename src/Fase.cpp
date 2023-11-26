@@ -11,27 +11,28 @@ namespace Estados
 {
     namespace Fases
     {
-        Fase::Fase(int i):
+        Fase::Fase(int i, int quantidadeJogadores):
         jogadores(),
         obstaculos(),
         inimigos(),
         Estado(i),
-        fimDeJogo(false)
+        fimDeJogo(true),
+        quantidadeJogadores(quantidadeJogadores)
         {
             gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);
             gC.set_obstaculos(&obstaculos);
-            criarJogadores();
-            criarInimigos();
         }
         Fase::~Fase()
         {
             salvar();
         }
+
         void Fase::removeNeutralizados()
         {
             jogadores.remover_neutralizados();
             inimigos.remover_neutralizados();
+            obstaculos.remover_neutralizados();
         }
         void Fase::gerenciar_colisoes()
         {
@@ -125,8 +126,7 @@ namespace Estados
 
             Entidades::Entidade* aux = nullptr;
 
-            bool jogadores_iniciados = jogadores.get_tamanho() > 0;
-            bool inimigos_iniciados = inimigos.get_tamanho() > 0;
+            bool inicializado = jogadores.get_tamanho() > 0 || inimigos.get_tamanho() > 0;
 
             int j = 0;
             for (int i = 0; std::getline(arquivo, linha); i++)
@@ -153,7 +153,7 @@ namespace Estados
                     break;
                         // Jogador1
                     case '1':
-                        if(!jogadores_iniciados){
+                        if(!inicializado){
                         Entidades::Personagens::Jogador* jgd = new Entidades::Personagens::Jogador(sf::Vector2f(j * TAM , i * TAM), sf::Vector2f(0,0));
                         aux = static_cast<Entidades::Entidade*>(jgd);
                         if (aux){
@@ -163,7 +163,7 @@ namespace Estados
                         }
                     break;
                     case '2':
-                    if(!jogadores_iniciados){
+                    if(!inicializado && quantidadeJogadores == 2){
                         Entidades::Personagens::Jogador* jgd = new Entidades::Personagens::Jogador(sf::Vector2f(j * TAM , i * TAM), sf::Vector2f(0,0));
                         aux = static_cast<Entidades::Entidade*>(jgd);
                         if (aux){
@@ -172,8 +172,15 @@ namespace Estados
                         };
                     }
                     break;
-                    case 'i':
-                        if(!inimigos_iniciados){
+                    case 'r':
+                        if(!inicializado){
+                            aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Gosma_Nuclear(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
+                            if (aux)
+                                inimigos.incluir(aux);
+                        }
+                    break;
+                    case 'g':
+                        if(!inicializado){
                             aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Gosma_Verde(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
                             if (aux)
                                 inimigos.incluir(aux);

@@ -40,7 +40,8 @@ namespace Estados {
                 // mudarEstado(Estados::estadoID::Configuracoes);
                 break;
             case 2:
-                mudarEstado(1);
+                plvl->terminar();
+                mudarEstado(0);
                 // mudarEstado(Estados::estadoID::MenuPrincipal);
                 // plvl->endLevel();
                 break;

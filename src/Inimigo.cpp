@@ -9,6 +9,7 @@ namespace Entidades
         Personagem(pos, vel, id),
         pontos(0)
         {
+            set_vida(2);
         }
         Inimigo::~Inimigo()
         {
