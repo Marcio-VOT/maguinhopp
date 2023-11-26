@@ -12,7 +12,7 @@ namespace ElementosGraficos{
     texto.setPosition(position);
     texto.setCharacterSize(20);
     texto.setFillColor(sf::Color::White);
-    setAlinhamentodeTexto(AlinhamentodeTexto::esquerda);
+    setAlinhamentodeTexto(AlinhamentodeTexto::centro);
   }
 
   Texto::~Texto(){
@@ -47,13 +47,13 @@ namespace ElementosGraficos{
   void Texto::setAlinhamentodeTexto(AlinhamentodeTexto option){
     switch (option) {
       case esquerda:
-        texto.setOrigin(0, 0);
+        texto.setOrigin(0, texto.getLocalBounds().height/2);
         break;
       case centro:
-        texto.setOrigin(texto.getLocalBounds().width / 2, 0);
+        texto.setOrigin(texto.getLocalBounds().width/2, texto.getLocalBounds().height/2);
         break;
       case direita:
-        texto.setOrigin(texto.getLocalBounds().width, 0);
+        texto.setOrigin(texto.getLocalBounds().width, texto.getLocalBounds().height/2);
         break;
     }
   }

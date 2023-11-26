@@ -11,6 +11,7 @@ namespace ElementosGraficos {
     body.setFillColor(sf::Color::White);
     body.setOutlineColor(sf::Color::Black);
     body.setOutlineThickness(2);
+    posicao = sf::Vector2f(posicao.x + body.getSize().x/2, posicao.y + 18);
 
     textoInfo = new Texto(posicao, info);
     textoInfo->setCorTexto(sf::Color::Black);
