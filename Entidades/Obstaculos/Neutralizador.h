@@ -10,23 +10,12 @@ namespace Entidades
         class Neutralizador: public Obstaculo
         {
         private:
-
+          bool ativo_;
         public:
-            Neutralizador(sf::Vector2f pos = sf::Vector2f(0.f, 0.f));
+            Neutralizador(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), bool ativo = true);
             ~Neutralizador();
             void executar();
-            void colidir(Entidade* outro, int side = -1){
-              if(outro != nullptr){
-                try
-                {
-                  dynamic_cast<Entidades::Personagens::Personagem*>(outro)->set_vida(0);
-                }
-                catch(const std::exception& e)
-                {
-                }
-                
-              }
-            };
+            void colidir(Entidade* outro, int side = -1);
         };
     }
 }

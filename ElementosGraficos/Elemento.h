@@ -1,3 +1,7 @@
+/*
+    CÓDIGO FORTEMENTE INSPIRADO NO CÓDIGO DO TUTOR Matheus Burda - https://github.com/MatheusBurda
+    CÓDIGO ORIGINAL: https://github.com/MatheusBurda/Desert
+*/
 #pragma once
 
 #include "../Gerenciadores/Gerenciador_Grafico.h"

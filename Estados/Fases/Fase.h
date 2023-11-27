@@ -1,3 +1,10 @@
+/*
+    CÓDIGO FORTEMENTE INSPIRADO NO CÓDIGO DO TUTOR Matheus Burda - https://github.com/MatheusBurda
+    CÓDIGO ORIGINAL: https://github.com/MatheusBurda/Desert
+    CÓDIGO FORTEMENTE INSPIRADO NO CÓDIGO DOS TUTORES  "Os petequeiros Jean e Murilo" - https://github.com/Nixxye -  https://utfpr.curitiba.br/peteco/
+    Canal: https://www.youtube.com/@PETECOUTFPR
+    CÓDIGO ORIGINAL: https://github.com/Nixxye/peteco-tegprog
+*/
 #pragma once
 
 #include "../../Entidades/Entidade.h"
@@ -6,6 +13,7 @@
 #include "../../Entidades/Obstaculos/Obst_Facil.h"
 #include "../../Entidades/Obstaculos/Tabua.h"
 #include "../../Entidades/Obstaculos/Plataforma.h"
+#include "../../Entidades/Obstaculos/Neutralizador.h"
 
 #include "../../Entidades/Personagens/Gosma_Verde.h"
 #include "../../Entidades/Personagens/Gosma_Nuclear.h"
@@ -34,6 +42,7 @@ namespace Estados
             bool fimDeJogo;
             int quantidadeJogadores;
             bool primeira;
+            int pontosFase;
 
         public:
             Fase(int i = - 1, int quantidadeJogadores = 1);
@@ -49,6 +58,9 @@ namespace Estados
             bool getPrimeira() const{
                 return primeira;
             };
+            int getPontosFase() const{
+                return pontosFase;
+            };
             void criarJogadores();
             void criarInimigos();
             void removeNeutralizados();
@@ -58,6 +70,7 @@ namespace Estados
                 jogadores.limpar();
                 inimigos.limpar();
                 obstaculos.limpar();
+                pontosFase = 0;
             };
             int getQuantidadeJogadores() const{
                 return quantidadeJogadores;

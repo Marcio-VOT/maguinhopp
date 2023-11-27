@@ -11,7 +11,6 @@ namespace Entidades
         {
         private:
           tamanho_plataforma tamanho_;
-
         public:
             Plataforma(sf::Vector2f pos = sf::Vector2f(0.f, 0.f), char tipo = 'p');
             ~Plataforma();

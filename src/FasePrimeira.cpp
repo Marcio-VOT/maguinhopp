@@ -55,7 +55,7 @@ namespace Estados
             gerenciar_colisoes();
             removeNeutralizados();
 
-            if(inimigos.get_tamanho() < 1 && primeira)
+            if(inimigos.get_tamanho() < 1 && primeira && jogadores.get_tamanho() > 0)
             {
                 terminar();
 
@@ -67,8 +67,18 @@ namespace Estados
                 setPrimeira(false);
                 mudarEstado(1);
                 return;
-            }else if(inimigos.get_tamanho() < 1 && !primeira)
+            }else if(inimigos.get_tamanho() < 1 && !primeira  && jogadores.get_tamanho() > 0)
             {
+                //iterator para o jogador
+                Listas::Lista<Entidades::Entidade>::Iterador it = jogadores.get_primeiro();
+                Entidades::Personagens::Jogador* jogador1 = dynamic_cast<Entidades::Personagens::Jogador*>(*it);
+                pontosFase += jogador1->getPontos();
+                if(jogadores.get_tamanho() > 1){
+                it++;
+                Entidades::Personagens::Jogador* jogador2 = dynamic_cast<Entidades::Personagens::Jogador*>(*it);
+                pontosFase += jogador2->getPontos();
+                }
+
                 terminar();
                 mudarEstado(0);
                 return;

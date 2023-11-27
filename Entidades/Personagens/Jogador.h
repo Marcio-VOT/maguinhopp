@@ -21,6 +21,9 @@ namespace Entidades
             void updatePlayerId(IDs::IDs id);
             void executar();
             void mover();
+            int getPontos() const{
+                return pontos;
+            };
             void colidir(Entidade* outro, int side = -1);
             void salvar(std::ostringstream* entrada);
         };

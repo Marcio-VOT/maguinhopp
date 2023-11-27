@@ -1,3 +1,4 @@
+
 #include "../Gerenciadores/Gerenciador_Entrada.h"
 #include "../Controladores/Observer.h"
 

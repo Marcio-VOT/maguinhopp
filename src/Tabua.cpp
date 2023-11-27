@@ -14,7 +14,11 @@ namespace Entidades
           corpo.setFillColor(sf::Color(165, 42, 42, 255));
           corpo.setOutlineThickness(1.f);
           corpo.setOutlineColor(sf::Color::Black);
-          corpo.setSize(sf::Vector2f(corpo.getSize().x, corpo.getSize().y +2));
+          sf::Vector2f tam = corpo.getSize();
+          corpo.setSize(sf::Vector2f(corpo.getSize().x, 10.f));
+
+          corpo.setOrigin((corpo.getSize().x - tam.x)/2 , (corpo.getSize().y - tam.y)/2);
+          corpo.setPosition(sf::Vector2f(corpo.getPosition().x, corpo.getPosition().y - (tam.y/2 - 4)));
           set_id(IDs::IDs::tabua);
         }
         Tabua::~Tabua()

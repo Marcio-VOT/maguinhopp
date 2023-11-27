@@ -17,7 +17,8 @@ namespace Estados
         inimigos(),
         Estado(i),
         fimDeJogo(true),
-        quantidadeJogadores(quantidadeJogadores)
+        quantidadeJogadores(quantidadeJogadores),
+        pontosFase(0)
         {
             gC.set_inimigos(&inimigos);
             gC.set_jogadores(&jogadores);
@@ -129,6 +130,7 @@ namespace Estados
             bool inicializado = jogadores.get_tamanho() > 0 || inimigos.get_tamanho() > 0;
 
             int j = 0;
+            int t = 0, n = 0, p = 0, r = 0, g = 0;
             for (int i = 0; std::getline(arquivo, linha); i++)
             {
                 j = 0;
@@ -158,19 +160,37 @@ namespace Estados
                             obstaculos.incluir(aux);
                     break;
                     case 't':    
+                        if(t < 3 || rand() % 2 == 0){
                         aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Tabua(sf::Vector2f(j * TAM + (TAM), i * TAM)));
                         if (aux)
                             obstaculos.incluir(aux);
+                        t++;
+                        }else{
+                            aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obst_Facil(sf::Vector2f(j * TAM + (TAM), i * TAM)));
+                            if (aux)
+                                obstaculos.incluir(aux);
+                        }
                     break;
                     case '-':    
-                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Obst_Facil(sf::Vector2f(j * TAM + (TAM), i * TAM)));
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Neutralizador(sf::Vector2f(j * TAM + (TAM), i * TAM)));
                         if (aux)
                             obstaculos.incluir(aux);
                     break;
+                    case '+':    
+                        if(n < 3 || rand() % 2 == 0){
+                        aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Neutralizador(sf::Vector2f(j * TAM + (TAM), i * TAM), false));
+                        if (aux)
+                            obstaculos.incluir(aux);
+                        n++;
+                        }
+                    break;
                     case 'p':
+                        if(p < 3 || rand() % 2 == 0){
                         aux = static_cast<Entidades::Entidade*> (new Entidades::Obstaculos::Plataforma(sf::Vector2f(j * TAM + (TAM), i * TAM), tipoPlat));
                         if (aux)
                             obstaculos.incluir(aux);
+                        p++;
+                        }
                     break;
                     case '1':
                         if(!inicializado){
@@ -194,16 +214,22 @@ namespace Estados
                     break;
                     case 'r':
                         if(!inicializado){
-                            aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Gosma_Nuclear(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
-                            if (aux)
-                                inimigos.incluir(aux);
+                            if(r < 3 || rand() % 2 == 0){
+                                aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Gosma_Nuclear(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
+                                if (aux)
+                                    inimigos.incluir(aux);
+                                r++;
+                            }
                         }
                     break;
                     case 'g':
                         if(!inicializado){
-                            aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Gosma_Verde(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
-                            if (aux)
-                                inimigos.incluir(aux);
+                            if(g < 3 || rand() % 2 == 0){
+                                aux = static_cast<Entidades::Entidade*>(new Entidades::Personagens::Gosma_Verde(sf::Vector2f(j * TAM, i * TAM), sf::Vector2f(0,0)));
+                                if (aux)
+                                    inimigos.incluir(aux);
+                                g++;
+                            }
                         }
                     break;
                     default:
